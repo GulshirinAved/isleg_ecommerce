@@ -1,0 +1,40 @@
+name: isleg_ecommerce
+description: A new Flutter project.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.1.0 <4.0.0'
+dependencies:
+  flutter:
+    sdk: flutter
+  equatable: ^2.0.5
+  flutter_bloc: ^8.1.3
+  flutter_svg: ^2.0.9
+  flutter_screenutil: ^5.9.0
+  go_router: ^13.1.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/logo/
+    - assets/icons/
+    - assets/slider_images/
+  fonts:
+    - family: TT Norms Pro Medium
+      fonts:
+        - asset: assets/fonts/TT Norms Pro Medium.otf
+    # - family: GilroySemiBold
+    #   fonts:
+    #     - asset: assets/fonts/Gilroy-SemiBold.ttf
+    # - family: GilroyMedium
+    #   fonts:
+    #     - asset: assets/fonts/Gilroy-Medium.ttf
+    # - family: GilroyRegular
+    #   fonts:
+    #     - asset: assets/fonts/Gilroy-Regular.ttf
+    

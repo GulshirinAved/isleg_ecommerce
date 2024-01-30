@@ -21,9 +21,9 @@ class CustomAppbar extends StatelessWidget implements PreferredSize {
       ),
       actions: [
         Container(
-          height: 40.w,
-          width: 40.w,
-          margin: EdgeInsets.only(right: 3),
+          height: 38.w,
+          width: 38.w,
+          margin: EdgeInsets.only(right: 6),
           decoration: BoxDecoration(
             color: AppColors.orangeColor,
             shape: BoxShape.circle,

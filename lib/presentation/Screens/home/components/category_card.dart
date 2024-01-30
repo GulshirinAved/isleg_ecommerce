@@ -19,7 +19,7 @@ class CategoryCardScrolling extends StatelessWidget {
       width: MediaQuery.of(context).size.width,
       child: ListView.builder(
         shrinkWrap: true,
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         scrollDirection: Axis.horizontal,
         itemCount: categoryNames.length,
         itemBuilder: (context, index) {
@@ -37,8 +37,8 @@ class CategoryCardScrolling extends StatelessWidget {
                   color: state.stateIndex == index
                       ? AppColors.darkOrangeColor
                       : AppColors.whiteColor,
-                  padding: EdgeInsets.only(top: 5),
-                  margin: EdgeInsets.only(top: 10),
+                  padding: const EdgeInsets.only(top: 5),
+                  margin: const EdgeInsets.only(top: 10),
                   child: Column(
                     children: [
                       SvgPicture.asset(

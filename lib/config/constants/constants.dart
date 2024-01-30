@@ -124,3 +124,5 @@ List productList = [
     'isNew': true,
   },
 ];
+//list router
+List<String> indexRouteNames = ['home', 'favorite', 'cart', 'profile'];

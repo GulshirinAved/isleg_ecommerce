@@ -12,7 +12,7 @@ void main() {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.grey),
           fontFamily: 'TT Norms Pro Medium',
         ),
-        routerConfig: router,
+        routerConfig: AppRouter.router,
       ),
     ),
   );

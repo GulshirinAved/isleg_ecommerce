@@ -3,14 +3,17 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
+
 import 'package:isleg_ecommerce/blocs/home/category_bloc/categery_selection_state.dart';
 import 'package:isleg_ecommerce/blocs/home/category_bloc/category_selection_bloc.dart';
 import 'package:isleg_ecommerce/config/constants/constants.dart';
 import 'package:isleg_ecommerce/config/theme/theme.dart';
 
 class CategoryCardScrolling extends StatelessWidget {
+  final bool isNavigate;
   const CategoryCardScrolling({
     super.key,
+    required this.isNavigate,
   });
 
   @override
@@ -29,7 +32,9 @@ class CategoryCardScrolling extends StatelessWidget {
               context
                   .read<CategorySelectionBloc>()
                   .add(PressBoxEvent(index: index));
-              context.goNamed('category');
+              if (isNavigate == true) {
+                context.pushNamed('category');
+              }
             },
             child: BlocBuilder<CategorySelectionBloc, CategorySelectionState>(
               builder: (context, state) {

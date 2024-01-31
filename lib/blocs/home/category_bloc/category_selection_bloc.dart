@@ -6,7 +6,7 @@ part 'category_selection_event.dart';
 
 class CategorySelectionBloc
     extends Bloc<CategorySelectionEvent, CategorySelectionState> {
-  CategorySelectionBloc() : super(CategorySelectionInitial(stateIndex: 0)) {
+  CategorySelectionBloc() : super(CategorySelectionState()) {
     on<PressBoxEvent>((event, emit) {
       emit(state.copyWith(stateIndex: event.index));
     });

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:isleg_ecommerce/presentation/CustomWidgets/custom_appbar.dart';
 import 'package:isleg_ecommerce/presentation/Screens/home/components/banner.dart';
 import 'package:isleg_ecommerce/presentation/Screens/home/components/category_card.dart';
@@ -10,12 +11,14 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       appBar: CustomAppbar(),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            CategoryCardScrolling(),
+            CategoryCardScrolling(
+              isNavigate: true,
+            ),
             ImageSlider(),
             SaleProducts(),
             NewProducts(),

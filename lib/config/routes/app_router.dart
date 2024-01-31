@@ -22,8 +22,15 @@ class AppRouter {
       ShellRoute(
         navigatorKey: _shellNavigatorKey,
         builder: (context, state, child) {
-          return BlocProvider(
-            create: (context) => BottomNavBarBloc(),
+          return MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (context) => BottomNavBarBloc(),
+              ),
+              BlocProvider(
+                create: (context) => CategorySelectionBloc(),
+              ),
+            ],
             child: BottomNavBar(child: child),
           );
         },
@@ -32,8 +39,8 @@ class AppRouter {
             path: '/',
             name: 'home',
             builder: (context, state) {
-              return BlocProvider(
-                create: (context) => CategorySelectionBloc(),
+              return BlocProvider.value(
+                value: context.read<CategorySelectionBloc>(),
                 child: const HomeScreen(),
               );
             },
@@ -42,7 +49,10 @@ class AppRouter {
                 path: 'category',
                 name: 'category',
                 builder: (context, state) {
-                  return const CategoryScreen();
+                  return BlocProvider<CategorySelectionBloc>.value(
+                    value: context.read<CategorySelectionBloc>(),
+                    child: CategoryScreen(),
+                  );
                 },
               ),
             ],

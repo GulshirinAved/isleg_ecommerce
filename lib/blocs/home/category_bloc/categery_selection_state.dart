@@ -11,16 +11,9 @@ class CategorySelectionState extends Equatable {
 
   CategorySelectionState copyWith({
     int? stateIndex,
-    bool? selected,
   }) {
     return CategorySelectionState(
       stateIndex: stateIndex ?? this.stateIndex,
     );
   }
-}
-
-// ignore: must_be_immutable
-class CategorySelectionInitial extends CategorySelectionState {
-  CategorySelectionInitial({required int stateIndex})
-      : super(stateIndex: stateIndex);
 }

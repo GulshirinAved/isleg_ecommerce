@@ -24,7 +24,7 @@ class BottomNavBar extends StatelessWidget {
               context
                   .read<BottomNavBarBloc>()
                   .add(TriggerBottomNavBarEvent(value));
-              GoRouter.of(context).goNamed(indexRouteNames[value]);
+              GoRouter.of(context).pushNamed(indexRouteNames[value]);
             },
             unselectedItemColor: AppColors.greyColor,
             selectedItemColor: AppColors.darkOrangeColor,

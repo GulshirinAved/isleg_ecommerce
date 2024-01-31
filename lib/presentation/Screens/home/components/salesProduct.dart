@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:isleg_ecommerce/config/constants/constants.dart';
-import 'package:isleg_ecommerce/presentation/Screens/home/components/product_card.dart';
+import 'package:isleg_ecommerce/presentation/Screens/home/components/productBanner_card.dart';
 import 'package:isleg_ecommerce/presentation/Screens/home/components/topTitle.dart';
 
 class SaleProducts extends StatelessWidget {
@@ -12,7 +12,7 @@ class SaleProducts extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const TopTitle(title: 'Aksiýadaky harytlar'),
+        const TopTitle(title: 'Täze harytlar'),
         Container(
           alignment: Alignment.topLeft,
           height: 250,

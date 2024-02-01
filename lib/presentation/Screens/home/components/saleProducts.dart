@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:isleg_ecommerce/config/constants/constants.dart';
+import 'package:isleg_ecommerce/data/models/cart_item.dart';
 import 'package:isleg_ecommerce/data/models/favItem_model.dart';
 import 'package:isleg_ecommerce/presentation/CustomWidgets/product_card.dart';
 import 'package:isleg_ecommerce/presentation/Screens/home/components/topTitle.dart';
@@ -27,6 +28,13 @@ class SaleProducts extends StatelessWidget {
                 favList: productList,
                 index: index,
                 favItem: FavItem(
+                  id: productList[index]['id'],
+                  name: productList[index]['name'],
+                  price: productList[index]['price'],
+                  previous_price: productList[index]['previous_price'],
+                  isNew: productList[index]['isNew'],
+                ),
+                cartItem: CartItem(
                   id: productList[index]['id'],
                   name: productList[index]['name'],
                   price: productList[index]['price'],

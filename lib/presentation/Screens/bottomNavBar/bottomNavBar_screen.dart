@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:go_router/go_router.dart';
 import 'package:isleg_ecommerce/blocs/bottomNavBar/bottomNavBar/bottom_nav_bar_bloc.dart';
+import 'package:isleg_ecommerce/blocs/cart/cart_bloc.dart';
 import 'package:isleg_ecommerce/config/constants/constants.dart';
 import 'package:isleg_ecommerce/config/theme/theme.dart';
 
@@ -37,20 +38,29 @@ class BottomNavBar extends StatelessWidget {
     );
   }
 
-  var bottomtabs = const [
-    BottomNavigationBarItem(
+  var bottomtabs = [
+    const BottomNavigationBarItem(
       icon: Icon(IconlyBold.home),
       label: 'Baş sahypa',
     ),
-    BottomNavigationBarItem(
+    const BottomNavigationBarItem(
       icon: Icon(Icons.favorite),
       label: 'Halanlam',
     ),
     BottomNavigationBarItem(
-      icon: Icon(IconlyBold.buy),
+      icon: BlocBuilder<CartBloc, CartState>(
+        builder: (context, state) {
+          return state.cartList.length == 0
+              ? Icon(IconlyBold.buy)
+              : Badge(
+                  label: Text(state.cartList.length.toString()),
+                  child: const Icon(IconlyBold.buy),
+                );
+        },
+      ),
       label: 'Sebet',
     ),
-    BottomNavigationBarItem(
+    const BottomNavigationBarItem(
       icon: Icon(IconlyBold.profile),
       label: 'Profil',
     ),

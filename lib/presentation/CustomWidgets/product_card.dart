@@ -4,17 +4,22 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:isleg_ecommerce/config/constants/constants.dart';
 import 'package:isleg_ecommerce/config/theme/theme.dart';
+import 'package:isleg_ecommerce/data/models/cart_item.dart';
 import 'package:isleg_ecommerce/data/models/favItem_model.dart';
+import 'package:isleg_ecommerce/presentation/CustomWidgets/cart_button.dart';
 import 'package:isleg_ecommerce/presentation/CustomWidgets/fav_button.dart';
 
 class ProductCard extends StatelessWidget {
   final List favList;
   final int index;
   final FavItem favItem;
+  final CartItem cartItem;
+
   const ProductCard(
       {Key? key,
       required this.favItem,
       required this.favList,
+      required this.cartItem,
       required this.index})
       : super(key: key);
 
@@ -104,19 +109,8 @@ class ProductCard extends StatelessWidget {
           Positioned(
             right: 7,
             bottom: 9,
-            child: Container(
-              height: 35.w,
-              width: 35.w,
-              decoration: BoxDecoration(
-                  shape: BoxShape.circle, color: AppColors.darkOrangeColor),
-              child: IconButton(
-                onPressed: () {},
-                icon: Icon(
-                  Icons.shopping_cart,
-                  color: AppColors.whiteColor,
-                  size: 18.h,
-                ),
-              ),
+            child: CartButton(
+              cartItem: cartItem,
             ),
           ),
           Positioned(

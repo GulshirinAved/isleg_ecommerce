@@ -18,8 +18,6 @@ class FavButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<FavButtonBloc, FavButtonState>(
       builder: (context, state) {
-        print('it favButtton ${state.favList}');
-
         return IconButton(
           onPressed: () {
             BlocProvider.of<FavButtonBloc>(context).add(

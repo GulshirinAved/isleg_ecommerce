@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:isleg_ecommerce/config/constants/constants.dart';
+import 'package:isleg_ecommerce/data/models/favItem_model.dart';
 import 'package:isleg_ecommerce/presentation/CustomWidgets/product_card.dart';
-import 'package:isleg_ecommerce/presentation/Screens/home/components/productBanner_card.dart';
 import 'package:isleg_ecommerce/presentation/Screens/home/components/topTitle.dart';
 
-class NewProducts extends StatelessWidget {
-  const NewProducts({
+class SaleProducts extends StatelessWidget {
+  const SaleProducts({
     super.key,
   });
 
@@ -24,7 +24,15 @@ class NewProducts extends StatelessWidget {
             itemCount: productList.length,
             itemBuilder: (context, index) {
               return ProductCard(
+                favList: productList,
                 index: index,
+                favItem: FavItem(
+                  id: productList[index]['id'],
+                  name: productList[index]['name'],
+                  price: productList[index]['price'],
+                  previous_price: productList[index]['previous_price'],
+                  isNew: productList[index]['isNew'],
+                ),
               );
             },
           ),

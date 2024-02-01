@@ -1,12 +1,22 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:isleg_ecommerce/config/constants/constants.dart';
 import 'package:isleg_ecommerce/config/theme/theme.dart';
+import 'package:isleg_ecommerce/data/models/favItem_model.dart';
 import 'package:isleg_ecommerce/presentation/CustomWidgets/fav_button.dart';
 
 class ProductCard extends StatelessWidget {
+  final List favList;
   final int index;
-  const ProductCard({super.key, required this.index});
+  final FavItem favItem;
+  const ProductCard(
+      {Key? key,
+      required this.favItem,
+      required this.favList,
+      required this.index})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +54,7 @@ class ProductCard extends StatelessWidget {
               width: 200.w,
               margin: const EdgeInsets.only(right: 6, left: 6),
               child: Text(
-                productList[index]['name'],
+                favItem.name,
                 style: TextStyle(
                   color: AppColors.darkBlueColor,
                   fontSize: AppFonts().fontSize14.sp,
@@ -69,7 +79,7 @@ class ProductCard extends StatelessWidget {
             child: Container(
               margin: EdgeInsets.only(left: 6.w),
               child: Text(
-                '${productList[index]['price']} manat',
+                '${favItem.previous_price} manat',
                 style: TextStyle(
                   decoration: TextDecoration.lineThrough,
                   color: AppColors.darkBlueColor,
@@ -83,7 +93,7 @@ class ProductCard extends StatelessWidget {
             child: Container(
               margin: const EdgeInsets.only(left: 6),
               child: Text(
-                '${productList[index]['previous_price']} manat',
+                '${favItem.price} manat',
                 style: TextStyle(
                   color: AppColors.darkOrangeColor,
                   fontSize: AppFonts().fontSize20.sp,
@@ -92,11 +102,11 @@ class ProductCard extends StatelessWidget {
             ),
           ),
           Positioned(
-            right: 5,
+            right: 7,
             bottom: 9,
             child: Container(
-              height: 38.w,
-              width: 38.w,
+              height: 35.w,
+              width: 35.w,
               decoration: BoxDecoration(
                   shape: BoxShape.circle, color: AppColors.darkOrangeColor),
               child: IconButton(
@@ -104,6 +114,7 @@ class ProductCard extends StatelessWidget {
                 icon: Icon(
                   Icons.shopping_cart,
                   color: AppColors.whiteColor,
+                  size: 18.h,
                 ),
               ),
             ),
@@ -112,7 +123,7 @@ class ProductCard extends StatelessWidget {
             top: -5,
             right: 2,
             child: FavButton(
-              id: productList[index]['id'],
+              favItem: favItem,
             ),
           ),
         ],

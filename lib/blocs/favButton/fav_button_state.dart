@@ -2,18 +2,17 @@ part of 'fav_button_bloc.dart';
 
 sealed class FavButtonState extends Equatable {
   final List favList;
-  final bool isFav;
 
-  const FavButtonState({required this.favList, required this.isFav});
+  const FavButtonState({required this.favList});
 
   @override
-  List<Object> get props => [favList, isFav];
+  List<Object> get props => [favList];
 }
 
 final class FavButtonInitial extends FavButtonState {
-  const FavButtonInitial({required super.favList, required super.isFav});
+  const FavButtonInitial({required super.favList});
 }
 
 final class SuccessState extends FavButtonState {
-  const SuccessState({required super.favList, required super.isFav});
+  const SuccessState({required super.favList});
 }

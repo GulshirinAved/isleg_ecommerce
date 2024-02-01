@@ -1,14 +1,20 @@
 part of 'fav_button_bloc.dart';
 
 sealed class FavButtonEvent extends Equatable {
-  final int id;
+  final FavItem item;
 
-  const FavButtonEvent({required this.id});
+  const FavButtonEvent({
+    required this.item,
+  });
 
   @override
-  List<Object> get props => [id];
+  List<Object> get props => [item];
 }
 
-class PressedEvent extends FavButtonEvent {
-  const PressedEvent({required super.id});
+class AddEvent extends FavButtonEvent {
+  const AddEvent({required super.item});
+}
+
+class RemoveEvent extends FavButtonEvent {
+  const RemoveEvent({required super.item});
 }

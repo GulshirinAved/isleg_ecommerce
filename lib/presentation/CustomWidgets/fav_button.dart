@@ -5,24 +5,33 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:isleg_ecommerce/blocs/favButton/fav_button_bloc.dart';
 import 'package:isleg_ecommerce/config/theme/theme.dart';
+import 'package:isleg_ecommerce/data/models/favItem_model.dart';
 
 class FavButton extends StatelessWidget {
-  final int id;
+  final FavItem favItem;
   const FavButton({
     Key? key,
-    required this.id,
+    required this.favItem,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<FavButtonBloc, FavButtonState>(
       builder: (context, state) {
+        print('it favButtton ${state.favList}');
+
         return IconButton(
           onPressed: () {
-            context.read<FavButtonBloc>().add(PressedEvent(id: id));
+            BlocProvider.of<FavButtonBloc>(context).add(
+              state.favList.contains(favItem)
+                  ? RemoveEvent(item: favItem)
+                  : AddEvent(item: favItem),
+            );
           },
           icon: Icon(
-            state.favList.contains(id) ? Icons.favorite : Icons.favorite_border,
+            state.favList.contains(favItem)
+                ? Icons.favorite
+                : Icons.favorite_border,
             color: AppColors.darkOrangeColor,
             size: 26.h,
           ),

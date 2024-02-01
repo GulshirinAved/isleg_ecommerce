@@ -31,6 +31,9 @@ class AppRouter {
               BlocProvider(
                 create: (context) => CategorySelectionBloc(),
               ),
+              BlocProvider(
+                create: (context) => FavButtonBloc(),
+              ),
             ],
             child: BottomNavBar(child: child),
           );
@@ -44,12 +47,14 @@ class AppRouter {
                 providers: [
                   BlocProvider.value(
                     value: context.read<CategorySelectionBloc>(),
+                    child: HomeScreen(),
                   ),
-                  BlocProvider(
-                    create: (context) => FavButtonBloc(),
-                  ),
+                  BlocProvider.value(
+                    value: context.watch<FavButtonBloc>(),
+                    child: FavoriteScreen(),
+                  )
                 ],
-                child: const HomeScreen(),
+                child: HomeScreen(),
               );
             },
             routes: [
@@ -69,7 +74,10 @@ class AppRouter {
             path: '/favorite',
             name: 'favorite',
             builder: (context, state) {
-              return const FavoriteScreen();
+              return BlocProvider.value(
+                value: context.watch<FavButtonBloc>(),
+                child: const FavoriteScreen(),
+              );
             },
           ),
           GoRoute(

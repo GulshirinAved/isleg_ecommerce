@@ -3,8 +3,8 @@ import 'package:isleg_ecommerce/config/constants/constants.dart';
 import 'package:isleg_ecommerce/presentation/Screens/home/components/productBanner_card.dart';
 import 'package:isleg_ecommerce/presentation/Screens/home/components/topTitle.dart';
 
-class SaleProducts extends StatelessWidget {
-  const SaleProducts({
+class NewProducts extends StatelessWidget {
+  const NewProducts({
     super.key,
   });
 

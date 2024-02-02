@@ -4,6 +4,7 @@ String logoImages = 'assets/logo/logo.svg';
 //icons
 String search = 'assets/icons/search.svg';
 String heart = 'assets/icons/heart.svg';
+String cart = 'assets/icons/cart.svg';
 String arrowRight = 'assets/icons/arrowRight.svg';
 
 String productImage = 'assets/images/image.png';

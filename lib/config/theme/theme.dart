@@ -15,10 +15,12 @@ class AppFonts {
   double fontSize14 = 14;
   double fontSize15 = 15;
   double fontSize16 = 16;
-
+  double fontSize18 = 18;
+  double fontSize19 = 19;
   double fontSize20 = 20;
 }
 
 class AppBorderRadius {
   final borderRadius15 = BorderRadius.circular(15);
+  final borderRadius30 = BorderRadius.circular(30);
 }

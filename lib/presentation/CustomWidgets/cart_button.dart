@@ -2,8 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:isleg_ecommerce/blocs/cartButton/cart_bloc.dart';
 
-import 'package:isleg_ecommerce/blocs/cart/cart_bloc.dart';
 import 'package:isleg_ecommerce/config/theme/theme.dart';
 import 'package:isleg_ecommerce/data/models/cart_item.dart';
 
@@ -25,8 +25,6 @@ class CartButton extends StatelessWidget {
       ),
       child: BlocBuilder<CartBloc, CartState>(
         builder: (context, state) {
-          print('${state.cartList} it is cart Button');
-
           return IconButton(
             onPressed: () {
               if (state.cartList.contains(cartItem) == false) {

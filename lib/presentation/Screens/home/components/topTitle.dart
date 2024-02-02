@@ -20,7 +20,7 @@ class TopTitle extends StatelessWidget {
             title,
             style: TextStyle(
               color: AppColors.darkBlueColor,
-              fontSize: AppFonts().fontSize20,
+              fontSize: AppFonts().fontSize20.sp,
             ),
           ),
           SvgPicture.asset(

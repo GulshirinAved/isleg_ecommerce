@@ -57,13 +57,21 @@ class CartCard extends StatelessWidget {
                   ),
                   Padding(
                     padding: EdgeInsets.only(left: 28.w),
-                    child: GestureDetector(
-                      onTap: () {},
-                      child: Icon(
-                        CupertinoIcons.clear_circled,
-                        color: AppColors.darkOrangeColor,
-                        size: 27,
-                      ),
+                    child: BlocBuilder<CartBloc, CartState>(
+                      builder: (context, state) {
+                        return GestureDetector(
+                          onTap: () {
+                            return context
+                                .read<CartBloc>()
+                                .add(RemoveEvent(cartItem: cartItem));
+                          },
+                          child: Icon(
+                            CupertinoIcons.clear_circled,
+                            color: AppColors.darkOrangeColor,
+                            size: 27,
+                          ),
+                        );
+                      },
                     ),
                   ),
                 ],

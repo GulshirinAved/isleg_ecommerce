@@ -18,6 +18,24 @@ final class AddEvent extends CartEvent {
   List<Object> get props => [cartItem];
 }
 
+final class RemoveEvent extends CartEvent {
+  RemoveEvent({
+    required super.cartItem,
+  });
+  @override
+  // TODO: implement props
+  List<Object> get props => [cartItem];
+}
+
+final class RemoveAllEvent extends CartEvent {
+  RemoveAllEvent({
+    required super.cartItem,
+  });
+  @override
+  // TODO: implement props
+  List<Object> get props => [cartItem];
+}
+
 final class PlusButtonEvent extends CartEvent {
   PlusButtonEvent({
     required super.cartItem,

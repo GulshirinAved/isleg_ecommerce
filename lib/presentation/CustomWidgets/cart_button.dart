@@ -23,7 +23,8 @@ class CartButton extends StatelessWidget {
         shape: BoxShape.circle,
         color: AppColors.darkOrangeColor,
       ),
-      child: BlocBuilder<CartBloc, CartState>(
+      child: BlocConsumer<CartBloc, CartState>(
+        listener: (context, state) {},
         builder: (context, state) {
           return IconButton(
             onPressed: () {

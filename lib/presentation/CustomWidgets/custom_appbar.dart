@@ -1,17 +1,22 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:isleg_ecommerce/blocs/cart/cart_bloc.dart';
 
 import 'package:isleg_ecommerce/config/constants/constants.dart';
 import 'package:isleg_ecommerce/config/theme/theme.dart';
+import 'package:isleg_ecommerce/data/models/cart_item.dart';
 
 class CustomAppbar extends StatelessWidget implements PreferredSize {
   final int number;
-  const CustomAppbar({
+  VoidCallback? onTap;
+  CustomAppbar({
     Key? key,
     required this.number,
+    this.onTap,
   }) : super(key: key);
 
   @override
@@ -28,23 +33,39 @@ class CustomAppbar extends StatelessWidget implements PreferredSize {
         number == 1
             ? iconSearch()
             : number == 2
-                ? iconDelete()
+                ? iconDelete(context)
                 : const SizedBox(),
       ],
       centerTitle: true,
     );
   }
 
-  Widget iconDelete() {
+  Widget iconDelete(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(right: 6),
-      child: IconButton(
-        onPressed: () {},
-        icon: Icon(
-          IconlyBold.delete,
-          color: AppColors.darkOrangeColor,
-          size: 25.h,
-        ),
+      child: BlocBuilder<CartBloc, CartState>(
+        builder: (context, state) {
+          return IconButton(
+            onPressed: () {
+              context.read<CartBloc>().add(
+                    RemoveAllEvent(
+                      cartItem: CartItem(
+                        id: 1,
+                        name: '',
+                        price: '',
+                        previous_price: '',
+                        isNew: false,
+                      ),
+                    ),
+                  );
+            },
+            icon: Icon(
+              IconlyBold.delete,
+              color: AppColors.darkOrangeColor,
+              size: 25.h,
+            ),
+          );
+        },
       ),
     );
   }

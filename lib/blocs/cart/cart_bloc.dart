@@ -6,11 +6,23 @@ part 'cart_event.dart';
 part 'cart_state.dart';
 
 class CartBloc extends Bloc<CartEvent, CartState> {
-  CartBloc() : super(CartInitial(cartList: [])) {
+  CartBloc() : super(CartInitial(cartList: const [])) {
     List updatedList = [];
     on<AddEvent>((event, emit) {
       updatedList = List.from(state.cartList)..add(event.cartItem);
       emit(CartSuccess(cartList: updatedList));
+    });
+    on<RemoveEvent>((event, emit) {
+      final updatedList = List<CartItem>.from(state.cartList);
+      final index =
+          updatedList.indexWhere((item) => item.id == event.cartItem.id);
+      updatedList.removeAt(index);
+      emit(CartSuccess(cartList: updatedList));
+    });
+    on<RemoveAllEvent>((event, emit) {
+      List updatedList = [];
+
+      emit(CartInitial(cartList: updatedList));
     });
     on<PlusButtonEvent>((event, emit) {
       final updatedList = List.from(state.cartList);

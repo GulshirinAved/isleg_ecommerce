@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:isleg_ecommerce/blocs/bottomNavBar/bottomNavBar/bottom_nav_bar_bloc.dart';
-import 'package:isleg_ecommerce/blocs/cartButton/cart_bloc.dart';
+import 'package:isleg_ecommerce/blocs/cart/cart_bloc.dart';
 import 'package:isleg_ecommerce/blocs/favButton/fav_button_bloc.dart';
 import 'package:isleg_ecommerce/blocs/home/category_bloc/category_selection_bloc.dart';
 import 'package:isleg_ecommerce/presentation/Screens/bottomNavBar/bottomNavBar_screen.dart';

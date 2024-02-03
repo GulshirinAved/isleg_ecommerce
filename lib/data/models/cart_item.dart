@@ -5,12 +5,14 @@ class CartItem {
   final String price;
   final String previous_price;
   final bool isNew;
+  int quantity;
   CartItem({
     required this.id,
     required this.name,
     required this.price,
     required this.previous_price,
     required this.isNew,
+    this.quantity = 1,
   });
 
   CartItem copyWith({
@@ -19,6 +21,7 @@ class CartItem {
     String? price,
     String? previous_price,
     bool? isNew,
+    int? quantity,
   }) {
     return CartItem(
       id: id ?? this.id,
@@ -26,6 +29,7 @@ class CartItem {
       price: price ?? this.price,
       previous_price: previous_price ?? this.previous_price,
       isNew: isNew ?? this.isNew,
+      quantity: quantity ?? this.quantity,
     );
   }
 
@@ -37,7 +41,8 @@ class CartItem {
         other.name == name &&
         other.price == price &&
         other.previous_price == previous_price &&
-        other.isNew == isNew;
+        other.isNew == isNew &&
+        other.quantity == quantity;
   }
 
   @override
@@ -46,6 +51,7 @@ class CartItem {
         name.hashCode ^
         price.hashCode ^
         previous_price.hashCode ^
-        isNew.hashCode;
+        isNew.hashCode ^
+        quantity.hashCode;
   }
 }

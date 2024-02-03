@@ -2,8 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:isleg_ecommerce/blocs/cart/cart_bloc.dart';
 
-import 'package:isleg_ecommerce/blocs/cartButton/cart_bloc.dart';
 import 'package:isleg_ecommerce/blocs/favButton/fav_button_bloc.dart';
 import 'package:isleg_ecommerce/config/constants/constants.dart';
 import 'package:isleg_ecommerce/data/models/cart_item.dart';

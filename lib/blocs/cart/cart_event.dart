@@ -1,12 +1,12 @@
 part of 'cart_bloc.dart';
 
 sealed class CartEvent extends Equatable {
-  final CartItem cartItem;
+  CartItem? cartItem;
 
   CartEvent({required this.cartItem});
 
   @override
-  List<Object> get props => [cartItem];
+  List<Object> get props => [cartItem!];
 }
 
 final class AddEvent extends CartEvent {
@@ -14,8 +14,7 @@ final class AddEvent extends CartEvent {
     required super.cartItem,
   });
   @override
-  // TODO: implement props
-  List<Object> get props => [cartItem];
+  List<Object> get props => [cartItem!];
 }
 
 final class RemoveEvent extends CartEvent {
@@ -23,8 +22,7 @@ final class RemoveEvent extends CartEvent {
     required super.cartItem,
   });
   @override
-  // TODO: implement props
-  List<Object> get props => [cartItem];
+  List<Object> get props => [cartItem!];
 }
 
 final class RemoveAllEvent extends CartEvent {
@@ -32,8 +30,7 @@ final class RemoveAllEvent extends CartEvent {
     required super.cartItem,
   });
   @override
-  // TODO: implement props
-  List<Object> get props => [cartItem];
+  List<Object> get props => [cartItem!];
 }
 
 final class PlusButtonEvent extends CartEvent {
@@ -41,8 +38,7 @@ final class PlusButtonEvent extends CartEvent {
     required super.cartItem,
   });
   @override
-  // TODO: implement props
-  List<Object> get props => [cartItem];
+  List<Object> get props => [cartItem!];
 }
 
 final class MinusButtonEvent extends CartEvent {
@@ -50,6 +46,9 @@ final class MinusButtonEvent extends CartEvent {
     required super.cartItem,
   });
   @override
-  // TODO: implement props
-  List<Object> get props => [cartItem];
+  List<Object> get props => [cartItem!];
+}
+
+final class SumProductEvent extends CartEvent {
+  SumProductEvent({required super.cartItem});
 }

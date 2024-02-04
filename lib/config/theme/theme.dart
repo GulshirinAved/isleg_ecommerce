@@ -21,6 +21,8 @@ class AppFonts {
 }
 
 class AppBorderRadius {
+  final borderRadius10 = BorderRadius.circular(10);
+
   final borderRadius15 = BorderRadius.circular(15);
   final borderRadius30 = BorderRadius.circular(30);
 }

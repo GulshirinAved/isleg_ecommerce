@@ -6,7 +6,7 @@ import 'package:isleg_ecommerce/config/theme/theme.dart';
 
 class TopTitle extends StatelessWidget {
   final String title;
-  const TopTitle({super.key, required this.title});
+  const TopTitle({required this.title, super.key});
 
   @override
   Widget build(BuildContext context) {

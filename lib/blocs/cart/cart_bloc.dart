@@ -15,21 +15,23 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     on<RemoveEvent>((event, emit) {
       final updatedList = List<CartItem>.from(state.cartList);
       final index =
-          updatedList.indexWhere((item) => item.id == event.cartItem.id);
+          updatedList.indexWhere((item) => item.id == event.cartItem!.id);
       updatedList.removeAt(index);
       emit(CartSuccess(cartList: updatedList));
     });
     on<RemoveAllEvent>((event, emit) {
       List updatedList = [];
 
-      emit(CartInitial(cartList: updatedList));
+      emit(CartInitial(
+        cartList: updatedList,
+      ));
     });
     on<PlusButtonEvent>((event, emit) {
       final updatedList = List.from(state.cartList);
       final index =
-          updatedList.indexWhere((item) => item.id == event.cartItem.id);
+          updatedList.indexWhere((item) => item.id == event.cartItem!.id);
       updatedList[index] =
-          event.cartItem.copyWith(quantity: updatedList[index].quantity + 1);
+          event.cartItem!.copyWith(quantity: updatedList[index].quantity + 1);
       emit(
         CartSuccess(
           cartList: updatedList,
@@ -39,16 +41,32 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     on<MinusButtonEvent>((event, emit) {
       final updatedList = List<CartItem>.from(state.cartList);
       final index =
-          updatedList.indexWhere((item) => item.id == event.cartItem.id);
+          updatedList.indexWhere((item) => item.id == event.cartItem!.id);
       if (index != -1) {
         if (updatedList[index].quantity > 1) {
-          updatedList[index] = event.cartItem
+          updatedList[index] = event.cartItem!
               .copyWith(quantity: updatedList[index].quantity - 1);
         } else {
           updatedList.removeAt(index);
         }
       }
       emit(CartSuccess(cartList: updatedList));
+    });
+    on<SumProductEvent>((event, emit) {
+      final updatedList = List<CartItem>.from(state.cartList);
+      double priceOfProducts = 0;
+
+      for (int i = 0; i < updatedList.length; i++) {
+        priceOfProducts +=
+            double.parse(updatedList[i].price) * updatedList[i].quantity;
+      }
+      emit(
+        SumProductState(
+          sum: priceOfProducts,
+          cartList: state.cartList,
+          sumDelivery: 15 + priceOfProducts,
+        ),
+      );
     });
   }
 }

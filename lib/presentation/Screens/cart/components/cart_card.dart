@@ -13,9 +13,9 @@ class CartCard extends StatelessWidget {
   final CartItem cartItem;
   final int index;
   const CartCard({
-    Key? key,
     required this.cartItem,
     required this.index,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -124,9 +124,9 @@ class CardButton extends StatelessWidget {
   final CartItem cartItem;
   final int index;
   const CardButton({
-    Key? key,
     required this.cartItem,
     required this.index,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -152,7 +152,7 @@ class CardButton extends StatelessWidget {
             return Text(
               state.cartList[index].id == cartItem.id
                   ? state.cartList[index].quantity.toString()
-                  : "0",
+                  : '0',
               style: TextStyle(
                 color: AppColors.whiteColor,
                 fontSize: AppFonts().fontSize15.sp,

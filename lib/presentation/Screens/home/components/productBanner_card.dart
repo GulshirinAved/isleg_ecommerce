@@ -8,8 +8,8 @@ import 'package:isleg_ecommerce/presentation/CustomWidgets/product_card.dart';
 class ProductCardBanner extends StatelessWidget {
   final int index;
   const ProductCardBanner({
-    super.key,
     required this.index,
+    super.key,
   });
 
   @override

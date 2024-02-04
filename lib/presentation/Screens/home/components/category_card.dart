@@ -12,8 +12,8 @@ import 'package:isleg_ecommerce/config/theme/theme.dart';
 class CategoryCardScrolling extends StatelessWidget {
   final bool isNavigate;
   const CategoryCardScrolling({
-    super.key,
     required this.isNavigate,
+    super.key,
   });
 
   @override

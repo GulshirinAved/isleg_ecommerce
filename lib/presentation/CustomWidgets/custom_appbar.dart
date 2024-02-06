@@ -4,12 +4,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:isleg_ecommerce/blocs/cart/cart_bloc.dart';
+import 'package:isleg_ecommerce/blocs/carts/cart/cart_bloc.dart';
 
 import 'package:isleg_ecommerce/config/constants/constants.dart';
 import 'package:isleg_ecommerce/config/theme/theme.dart';
 import 'package:isleg_ecommerce/data/models/cart_item.dart';
 
+// ignore: must_be_immutable
 class CustomAppbar extends StatelessWidget implements PreferredSize {
   final int number;
   VoidCallback? onTap;
@@ -48,7 +49,7 @@ class CustomAppbar extends StatelessWidget implements PreferredSize {
           return IconButton(
             onPressed: () {
               context.read<CartBloc>().add(
-                    RemoveAllEvent(
+                    RemoveCartAllEvent(
                       cartItem: CartItem(
                         id: 1,
                         name: '',

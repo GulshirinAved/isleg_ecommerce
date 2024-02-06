@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:isleg_ecommerce/config/theme/theme.dart';
 
 class MakeOrderButton extends StatelessWidget {
@@ -21,7 +23,9 @@ class MakeOrderButton extends StatelessWidget {
         ),
         backgroundColor: MaterialStatePropertyAll(AppColors.darkOrangeColor),
       ),
-      onPressed: () {},
+      onPressed: () {
+        context.pushNamed('cartCheckUp');
+      },
       child: SizedBox(
         width: MediaQuery.of(context).size.width,
         child: Stack(
@@ -30,7 +34,7 @@ class MakeOrderButton extends StatelessWidget {
               alignment: Alignment.center,
               child: Text(
                 'Sargyt et',
-                style: TextStyle(fontSize: AppFonts().fontSize18),
+                style: TextStyle(fontSize: AppFonts().fontSize18.sp),
               ),
             ),
             const Positioned(

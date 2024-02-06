@@ -16,17 +16,17 @@ class ProductCard extends StatelessWidget {
   final CartItem cartItem;
 
   const ProductCard(
-      {Key? key,
-      required this.favItem,
+      {required this.favItem,
       required this.favList,
       required this.cartItem,
-      required this.index})
+      required this.index,
+      Key? key})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(right: 10),
+      padding: const EdgeInsets.only(right: 10),
       child: Stack(
         children: [
           Container(
@@ -59,7 +59,7 @@ class ProductCard extends StatelessWidget {
               width: 200.w,
               margin: const EdgeInsets.only(right: 6, left: 6),
               child: Text(
-                favItem.name,
+                favItem.favName,
                 style: TextStyle(
                   color: AppColors.darkBlueColor,
                   fontSize: AppFonts().fontSize14.sp,
@@ -84,7 +84,7 @@ class ProductCard extends StatelessWidget {
             child: Container(
               margin: EdgeInsets.only(left: 6.w),
               child: Text(
-                '${favItem.previous_price} manat',
+                '${favItem.favPrevious_price} manat',
                 style: TextStyle(
                   decoration: TextDecoration.lineThrough,
                   color: AppColors.darkBlueColor,
@@ -98,7 +98,7 @@ class ProductCard extends StatelessWidget {
             child: Container(
               margin: const EdgeInsets.only(left: 6),
               child: Text(
-                '${favItem.price} manat',
+                '${favItem.favPrice} manat',
                 style: TextStyle(
                   color: AppColors.darkOrangeColor,
                   fontSize: AppFonts().fontSize20.sp,

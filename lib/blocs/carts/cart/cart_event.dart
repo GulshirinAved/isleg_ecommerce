@@ -9,24 +9,24 @@ sealed class CartEvent extends Equatable {
   List<Object> get props => [cartItem!];
 }
 
-final class AddEvent extends CartEvent {
-  AddEvent({
+final class AddCartEvent extends CartEvent {
+  AddCartEvent({
     required super.cartItem,
   });
   @override
   List<Object> get props => [cartItem!];
 }
 
-final class RemoveEvent extends CartEvent {
-  RemoveEvent({
+final class RemoveCartEvent extends CartEvent {
+  RemoveCartEvent({
     required super.cartItem,
   });
   @override
   List<Object> get props => [cartItem!];
 }
 
-final class RemoveAllEvent extends CartEvent {
-  RemoveAllEvent({
+final class RemoveCartAllEvent extends CartEvent {
+  RemoveCartAllEvent({
     required super.cartItem,
   });
   @override

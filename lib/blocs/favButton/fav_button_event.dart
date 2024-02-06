@@ -11,10 +11,10 @@ sealed class FavButtonEvent extends Equatable {
   List<Object> get props => [item];
 }
 
-class AddEvent extends FavButtonEvent {
-  const AddEvent({required super.item});
+class AddFavEvent extends FavButtonEvent {
+  const AddFavEvent({required super.item});
 }
 
-class RemoveEvent extends FavButtonEvent {
-  const RemoveEvent({required super.item});
+class RemoveFavEvent extends FavButtonEvent {
+  const RemoveFavEvent({required super.item});
 }

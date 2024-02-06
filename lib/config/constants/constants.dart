@@ -6,8 +6,8 @@ String search = 'assets/icons/search.svg';
 String heart = 'assets/icons/heart.svg';
 String cart = 'assets/icons/cart.svg';
 String arrowRight = 'assets/icons/arrowRight.svg';
-
 String productImage = 'assets/images/image.png';
+String personImage = 'assets/images/person.png';
 //list icons
 List<dynamic> categoryNames = [
   {
@@ -144,3 +144,11 @@ List productList = [
 ];
 //list router
 List<String> indexRouteNames = ['home', 'favorite', 'cart', 'profile'];
+//payment list
+List payment = ['Nagt', 'Töleg terminaly', 'QR Kod (Rysgal Pay)'];
+//delivery time
+List deliveryTime = [
+  '12:00-15:00',
+  '15:00-18:00',
+  '18:00-21:00',
+];

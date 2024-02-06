@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:isleg_ecommerce/blocs/cart/cart_bloc.dart';
+import 'package:isleg_ecommerce/blocs/carts/cart/cart_bloc.dart';
 
 import 'package:isleg_ecommerce/config/theme/theme.dart';
 import 'package:isleg_ecommerce/data/models/cart_item.dart';
@@ -29,7 +29,7 @@ class CartButton extends StatelessWidget {
           return IconButton(
             onPressed: () {
               if (state.cartList.contains(cartItem) == false) {
-                context.read<CartBloc>().add(AddEvent(cartItem: cartItem));
+                context.read<CartBloc>().add(AddCartEvent(cartItem: cartItem));
               }
             },
             icon: Icon(

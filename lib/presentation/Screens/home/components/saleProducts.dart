@@ -28,11 +28,11 @@ class SaleProducts extends StatelessWidget {
                 favList: productList,
                 index: index,
                 favItem: FavItem(
-                  id: productList[index]['id'],
-                  name: productList[index]['name'],
-                  price: productList[index]['price'],
-                  previous_price: productList[index]['previous_price'],
-                  isNew: productList[index]['isNew'],
+                  favId: productList[index]['id'],
+                  favName: productList[index]['name'],
+                  favPrice: productList[index]['price'],
+                  favPrevious_price: productList[index]['previous_price'],
+                  favIsNew: productList[index]['isNew'],
                 ),
                 cartItem: CartItem(
                   id: productList[index]['id'],

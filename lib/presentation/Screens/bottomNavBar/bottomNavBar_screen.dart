@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:go_router/go_router.dart';
 import 'package:isleg_ecommerce/blocs/bottomNavBar/bottomNavBar/bottom_nav_bar_bloc.dart';
-import 'package:isleg_ecommerce/blocs/cart/cart_bloc.dart';
+import 'package:isleg_ecommerce/blocs/carts/cart/cart_bloc.dart';
 import 'package:isleg_ecommerce/config/constants/constants.dart';
 import 'package:isleg_ecommerce/config/theme/theme.dart';
 

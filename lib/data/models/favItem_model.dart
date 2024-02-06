@@ -1,31 +1,31 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 class FavItem {
-  final int id;
-  final String name;
-  final String price;
-  final String previous_price;
-  final bool isNew;
+  final int favId;
+  final String favName;
+  final String favPrice;
+  final String favPrevious_price;
+  final bool favIsNew;
   FavItem({
-    required this.id,
-    required this.name,
-    required this.price,
-    required this.previous_price,
-    required this.isNew,
+    required this.favId,
+    required this.favName,
+    required this.favPrice,
+    required this.favPrevious_price,
+    required this.favIsNew,
   });
 
   FavItem copyWith({
-    int? id,
-    String? name,
-    String? price,
-    String? previous_price,
-    bool? isNew,
+    int? favId,
+    String? favName,
+    String? favPrice,
+    String? favPrevious_price,
+    bool? favIsNew,
   }) {
     return FavItem(
-      id: id ?? this.id,
-      name: name ?? this.name,
-      price: price ?? this.price,
-      previous_price: previous_price ?? this.previous_price,
-      isNew: isNew ?? this.isNew,
+      favId: favId ?? this.favId,
+      favName: favName ?? this.favName,
+      favPrice: favPrice ?? this.favPrice,
+      favPrevious_price: favPrevious_price ?? this.favPrevious_price,
+      favIsNew: favIsNew ?? this.favIsNew,
     );
   }
 
@@ -33,19 +33,19 @@ class FavItem {
   bool operator ==(covariant FavItem other) {
     if (identical(this, other)) return true;
 
-    return other.id == id &&
-        other.name == name &&
-        other.price == price &&
-        other.previous_price == previous_price &&
-        other.isNew == isNew;
+    return other.favId == favId &&
+        other.favName == favName &&
+        other.favPrice == favPrice &&
+        other.favPrevious_price == favPrevious_price &&
+        other.favIsNew == favIsNew;
   }
 
   @override
   int get hashCode {
-    return id.hashCode ^
-        name.hashCode ^
-        price.hashCode ^
-        previous_price.hashCode ^
-        isNew.hashCode;
+    return favId.hashCode ^
+        favName.hashCode ^
+        favPrice.hashCode ^
+        favPrevious_price.hashCode ^
+        favIsNew.hashCode;
   }
 }

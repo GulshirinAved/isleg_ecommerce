@@ -20,11 +20,11 @@ class FavButton extends StatelessWidget {
       builder: (context, state) {
         return IconButton(
           onPressed: () {
-            BlocProvider.of<FavButtonBloc>(context).add(
-              state.favList.contains(favItem)
-                  ? RemoveEvent(item: favItem)
-                  : AddEvent(item: favItem),
-            );
+            if (state.favList.contains(favItem) == false) {
+              context.read<FavButtonBloc>().add(AddFavEvent(item: favItem));
+            } else {
+              context.read<FavButtonBloc>().add(RemoveFavEvent(item: favItem));
+            }
           },
           icon: Icon(
             state.favList.contains(favItem)

@@ -4,7 +4,16 @@ String logoImages = 'assets/logo/logo.svg';
 //icons
 String search = 'assets/icons/search.svg';
 String heart = 'assets/icons/heart.svg';
+String emptyCart = 'assets/icons/empty_cart.svg';
+
 String cart = 'assets/icons/cart.svg';
+String profile = 'assets/icons/profile.svg';
+String setting = 'assets/icons/setting.svg';
+String language = 'assets/icons/language.svg';
+String document = 'assets/icons/document.svg';
+String message = 'assets/icons/message.svg';
+String info = 'assets/icons/info.svg';
+String logout = 'assets/icons/logout.svg';
 String arrowRight = 'assets/icons/arrowRight.svg';
 String productImage = 'assets/images/image.png';
 String personImage = 'assets/images/person.png';
@@ -151,4 +160,15 @@ List deliveryTime = [
   '12:00-15:00',
   '15:00-18:00',
   '18:00-21:00',
+];
+//profile tile
+List<Map<String, dynamic>> profileTiles = [
+  {'icon': profile, 'title': 'Ulanyjy'},
+  {'icon': setting, 'title': 'Sazlamalar'},
+  {'icon': cart, 'title': 'Sargytlarym'},
+  {'icon': language, 'title': 'Dil çalyşmak'},
+  {'icon': document, 'title': 'Eltip berme we töleg'},
+  {'icon': message, 'title': 'Habarlaşmak'},
+  {'icon': info, 'title': 'Biz barada'},
+  {'icon': logout, 'title': 'Çykmak'},
 ];

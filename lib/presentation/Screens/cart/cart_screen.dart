@@ -21,7 +21,7 @@ class CartScreen extends StatelessWidget {
         builder: (context, state) {
           if (state is CartInitial || state.cartList.isEmpty) {
             return EmptyWarn(
-              icon: cart,
+              icon: emptyCart,
               topTitle: 'Sebediňiz boş',
               desc: 'Sargyt etmek üçin sebede haryt goşuň',
             );

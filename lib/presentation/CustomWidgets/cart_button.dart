@@ -5,10 +5,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:isleg_ecommerce/blocs/carts/cart/cart_bloc.dart';
 
 import 'package:isleg_ecommerce/config/theme/theme.dart';
-import 'package:isleg_ecommerce/data/models/cart_item.dart';
 
 class CartButton extends StatelessWidget {
-  final CartItem cartItem;
+  final cartItem;
   const CartButton({
     Key? key,
     required this.cartItem,

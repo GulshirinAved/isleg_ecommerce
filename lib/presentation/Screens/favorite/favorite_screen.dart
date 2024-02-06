@@ -23,50 +23,63 @@ class FavoriteScreen extends StatelessWidget {
       ),
       body: BlocBuilder<FavButtonBloc, FavButtonState>(
         builder: (context, state) {
-          if (state is FavButtonInitial || state.favList!.isEmpty) {
+          if (state is FavButtonInitial || state.favList.isEmpty) {
             return EmptyWarn(
               icon: heart,
               topTitle: 'Halanan haryt ýok',
               desc: 'Ilki halan harytlaryňyzy gosuň',
             );
           } else {
-            return SizedBox(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height,
-              child: GridView.builder(
-                padding: const EdgeInsets.only(top: 10, left: 20, right: 10),
-                physics: const BouncingScrollPhysics(),
-                shrinkWrap: true,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  mainAxisExtent: 215.h,
-                ),
-                itemCount: state.favList!.length,
-                itemBuilder: (context, index) {
-                  return Container(
-                    margin: const EdgeInsets.only(bottom: 10),
-                    child: ProductCard(
-                      favList: state.favList,
-                      index: index,
-                      favItem: FavItem(
-                        favId: state.favList[index].favId,
-                        favName: state.favList[index].favName,
-                        favPrice: state.favList[index].favPrice,
-                        favPrevious_price:
-                            state.favList[index].favPrevious_price,
-                        favIsNew: state.favList[index].favIsNew,
-                      ),
-                      cartItem: CartItem(
-                        id: 0,
-                        name: '',
-                        price: '',
-                        previous_price: '',
-                        isNew: false,
-                      ),
+            return BlocBuilder<CartBloc, CartState>(
+              builder: (context, cartstate) {
+                return SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height,
+                  child: GridView.builder(
+                    padding:
+                        const EdgeInsets.only(top: 10, left: 20, right: 10),
+                    physics: const BouncingScrollPhysics(),
+                    shrinkWrap: true,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      mainAxisExtent: 215.h,
                     ),
-                  );
-                },
-              ),
+                    itemCount: state.favList.length,
+                    itemBuilder: (context, index) {
+                      final cartItem = index < cartstate.cartList.length
+                          ? cartstate.cartList[index]
+                          : CartItem(
+                              id: state.favList[index].favId,
+                              name: state.favList[index].favName,
+                              price: state.favList[index].favPrice,
+                              previous_price:
+                                  state.favList[index].favPrevious_price,
+                              isNew: state.favList[index].favIsNew);
+
+                      return Container(
+                        margin: const EdgeInsets.only(bottom: 10),
+                        child: BlocBuilder<CartBloc, CartState>(
+                          builder: (context, cartstate) {
+                            return ProductCard(
+                              favList: state.favList,
+                              index: index,
+                              favItem: FavItem(
+                                favId: state.favList[index].favId,
+                                favName: state.favList[index].favName,
+                                favPrice: state.favList[index].favPrice,
+                                favPrevious_price:
+                                    state.favList[index].favPrevious_price,
+                                favIsNew: state.favList[index].favIsNew,
+                              ),
+                              cartItem: cartItem,
+                            );
+                          },
+                        ),
+                      );
+                    },
+                  ),
+                );
+              },
             );
           }
         },

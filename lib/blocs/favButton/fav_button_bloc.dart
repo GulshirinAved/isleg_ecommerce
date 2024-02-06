@@ -7,10 +7,10 @@ part 'fav_button_event.dart';
 part 'fav_button_state.dart';
 
 class FavButtonBloc extends Bloc<FavButtonEvent, FavButtonState> {
-  List<FavItem> updatedFavList = [];
+  List updatedFavList = [];
   FavButtonBloc() : super(const FavButtonInitial(favList: [])) {
     on<RemoveFavEvent>((event, emit) {
-      updatedFavList = List<FavItem>.from(state.favList)..remove(event.item);
+      updatedFavList = List.from(state.favList)..remove(event.item);
       emit(
         SuccessState(
           favList: updatedFavList,
@@ -19,7 +19,7 @@ class FavButtonBloc extends Bloc<FavButtonEvent, FavButtonState> {
       print(updatedFavList);
     });
     on<AddFavEvent>((event, emit) {
-      updatedFavList = List<FavItem>.from(state.favList)..add(event.item);
+      updatedFavList = List.from(state.favList)..add(event.item);
       emit(
         SuccessState(
           favList: updatedFavList,

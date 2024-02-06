@@ -49,7 +49,7 @@ class CartCard extends StatelessWidget {
                     margin: EdgeInsets.only(top: 5.h),
                     width: MediaQuery.of(context).size.width - 210,
                     child: Text(
-                      cartItem.name,
+                      cartItem.name ?? '',
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(color: AppColors.darkBlueColor),

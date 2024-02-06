@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:isleg_ecommerce/config/constants/constants.dart';
 import 'package:isleg_ecommerce/config/theme/theme.dart';
 import 'package:isleg_ecommerce/presentation/CustomWidgets/custom_appbar.dart';
@@ -18,29 +18,36 @@ class ProfileScreen extends StatelessWidget {
           const PersonData(),
           ListView.builder(
             shrinkWrap: true,
-            itemCount: 8,
+            itemCount: profileTiles.length,
+            itemExtent: 60,
             itemBuilder: (context, index) => Container(
-              margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+              margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 2),
               child: ListTile(
-                tileColor: AppColors.greyBlueColor,
+                tileColor: AppColors.whiteColor,
                 shape: RoundedRectangleBorder(
                   borderRadius: AppBorderRadius().borderRadius10,
+                  side: BorderSide(
+                    color: AppColors.lightGreyColor,
+                    width: 0.2,
+                  ),
                 ),
-                leading: Icon(
-                  IconlyBold.profile,
-                  color: AppColors.darkOrangeColor,
+                leading: SizedBox(
+                  width: 25,
+                  child: SvgPicture.asset(
+                    profileTiles[index]['icon'],
+                  ),
                 ),
                 title: Text(
-                  'Ulanyjy',
+                  profileTiles[index]['title'],
                   style: TextStyle(
                     color: AppColors.greyColor,
                     fontWeight: FontWeight.bold,
-                    fontSize: AppFonts().fontSize18,
+                    fontSize: AppFonts().fontSize16,
                   ),
                 ),
               ),
             ),
-          )
+          ),
         ],
       ),
     );

@@ -85,8 +85,16 @@ class AppRouter {
             path: '/favorite',
             name: 'favorite',
             builder: (context, state) {
-              return BlocProvider.value(
-                value: context.read<FavButtonBloc>(),
+              return MultiBlocProvider(
+                providers: [
+                  BlocProvider.value(
+                    value: context.read<FavButtonBloc>(),
+                  ),
+                  BlocProvider.value(
+                    value: context.read<CartBloc>(),
+                    child: const CartScreen(),
+                  ),
+                ],
                 child: const FavoriteScreen(),
               );
             },
@@ -96,7 +104,7 @@ class AppRouter {
             name: 'cart',
             builder: (context, state) {
               return BlocProvider.value(
-                value: context.watch<CartBloc>(),
+                value: context.read<CartBloc>(),
                 child: const CartScreen(),
               );
             },

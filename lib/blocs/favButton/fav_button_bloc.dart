@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:isleg_ecommerce/data/models/cart_item.dart';
 import 'package:isleg_ecommerce/data/models/favItem_model.dart';
 
 part 'fav_button_event.dart';

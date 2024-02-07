@@ -58,7 +58,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
 
       for (int i = 0; i < updatedList.length; i++) {
         priceOfProducts +=
-            double.parse(updatedList[i].price ?? '0') * updatedList[i].quantity;
+            double.parse(updatedList[i].price) * updatedList[i].quantity;
       }
       emit(
         SumProductState(

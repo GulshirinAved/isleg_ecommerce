@@ -40,7 +40,7 @@ Future<dynamic> bottomSheet(BuildContext context) {
                   fontSize: AppFonts().fontSize18.sp,
                 ),
               ),
-              divider(context),
+              DividerLine(context),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 15),
                 child: BlocBuilder<CartBloc, CartState>(

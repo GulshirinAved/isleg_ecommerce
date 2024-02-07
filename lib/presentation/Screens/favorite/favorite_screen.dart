@@ -54,7 +54,8 @@ class FavoriteScreen extends StatelessWidget {
                               price: state.favList[index].favPrice,
                               previous_price:
                                   state.favList[index].favPrevious_price,
-                              isNew: state.favList[index].favIsNew);
+                              isNew: state.favList[index].favIsNew,
+                            );
 
                       return Container(
                         margin: const EdgeInsets.only(bottom: 10),

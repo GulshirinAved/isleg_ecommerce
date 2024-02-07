@@ -10,12 +10,15 @@ import 'package:isleg_ecommerce/blocs/favButton/fav_button_bloc.dart';
 import 'package:isleg_ecommerce/blocs/home/category_bloc/category_selection_bloc.dart';
 import 'package:isleg_ecommerce/blocs/signup/passwordObscure/password_obscure_bloc.dart';
 import 'package:isleg_ecommerce/blocs/signup/signin_agree/signin_agree_bloc.dart';
+import 'package:isleg_ecommerce/data/models/cart_item.dart';
+import 'package:isleg_ecommerce/data/models/favItem_model.dart';
 import 'package:isleg_ecommerce/presentation/Screens/bottomNavBar/bottomNavBar_screen.dart';
 import 'package:isleg_ecommerce/presentation/Screens/cart/cart_screen.dart';
 import 'package:isleg_ecommerce/presentation/Screens/cart/checkUp_screen.dart';
 import 'package:isleg_ecommerce/presentation/Screens/category/category_screen.dart';
 import 'package:isleg_ecommerce/presentation/Screens/favorite/favorite_screen.dart';
 import 'package:isleg_ecommerce/presentation/Screens/home/home_screen.dart';
+import 'package:isleg_ecommerce/presentation/Screens/home/productProfile_screen.dart';
 import 'package:isleg_ecommerce/presentation/Screens/profile/profile_screen.dart';
 import 'package:isleg_ecommerce/presentation/Screens/signUp/signup_screen.dart';
 
@@ -76,6 +79,25 @@ class AppRouter {
                   return BlocProvider<CategorySelectionBloc>.value(
                     value: context.read<CategorySelectionBloc>(),
                     child: const CategoryScreen(),
+                  );
+                },
+              ),
+              GoRoute(
+                path: 'productProfile',
+                name: 'productProfile',
+                builder: (context, state) {
+                  final Map<String, dynamic>? extraData =
+                      state.extra as Map<String, dynamic>?;
+                  final FavItem favItem = extraData?['favItem'] as FavItem;
+                  final CartItem cartItem = extraData?['cartItem'] as CartItem;
+                  final String productImages =
+                      extraData?['productImages'] as String;
+                  final int index = extraData?['index'] as int;
+                  return ProductProfileScreen(
+                    favItem: favItem,
+                    cartItem: cartItem,
+                    productImages: productImages,
+                    index: index,
                   );
                 },
               ),

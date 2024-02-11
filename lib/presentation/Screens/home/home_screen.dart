@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:isleg_ecommerce/presentation/CustomWidgets/custom_appbar.dart';
 import 'package:isleg_ecommerce/presentation/Screens/home/components/banner.dart';
-import 'package:isleg_ecommerce/presentation/Screens/home/components/category_card.dart';
+import 'package:isleg_ecommerce/presentation/Screens/home/components/categoryScroll_card.dart';
 import 'package:isleg_ecommerce/presentation/Screens/home/components/saleProducts.dart';
 import 'package:isleg_ecommerce/presentation/Screens/home/components/newProduct.dart';
 

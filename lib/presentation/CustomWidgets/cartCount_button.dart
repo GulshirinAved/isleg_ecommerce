@@ -21,7 +21,7 @@ class CartCountButton extends StatelessWidget {
     return Container(
       width: 107.w,
       height: 33.h,
-      margin: EdgeInsets.only(left: 11.w),
+      margin: EdgeInsets.only(left: 5.w),
       decoration: BoxDecoration(
         color: AppColors.darkOrangeColor,
         borderRadius: AppBorderRadius().borderRadius30,
@@ -29,17 +29,13 @@ class CartCountButton extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          BlocBuilder<CartBloc, CartState>(
-            builder: (context, state) {
-              return CartIcons(
-                icon: CupertinoIcons.minus,
-                isMinus: true,
-                onTap: () {
-                  context
-                      .read<CartBloc>()
-                      .add(MinusButtonEvent(cartItem: cartItem));
-                },
-              );
+          CartIcons(
+            icon: CupertinoIcons.minus,
+            isMinus: true,
+            onTap: () {
+              context
+                  .read<CartBloc>()
+                  .add(MinusButtonEvent(cartItem: cartItem));
             },
           ),
           BlocBuilder<CartBloc, CartState>(
@@ -55,17 +51,11 @@ class CartCountButton extends StatelessWidget {
               );
             },
           ),
-          BlocBuilder<CartBloc, CartState>(
-            builder: (context, state) {
-              return CartIcons(
-                icon: CupertinoIcons.add,
-                isMinus: false,
-                onTap: () {
-                  context
-                      .read<CartBloc>()
-                      .add(PlusButtonEvent(cartItem: cartItem));
-                },
-              );
+          CartIcons(
+            icon: CupertinoIcons.add,
+            isMinus: false,
+            onTap: () {
+              context.read<CartBloc>().add(PlusButtonEvent(cartItem: cartItem));
             },
           ),
         ],

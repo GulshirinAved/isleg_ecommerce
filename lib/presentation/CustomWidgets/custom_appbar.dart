@@ -4,8 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:isleg_ecommerce/blocs/carts/cart/cart_bloc.dart';
+import 'package:go_router/go_router.dart';
 
+import 'package:isleg_ecommerce/blocs/carts/cart/cart_bloc.dart';
 import 'package:isleg_ecommerce/config/constants/constants.dart';
 import 'package:isleg_ecommerce/config/theme/theme.dart';
 import 'package:isleg_ecommerce/data/models/cart_item.dart';
@@ -14,10 +15,12 @@ import 'package:isleg_ecommerce/data/models/cart_item.dart';
 class CustomAppbar extends StatelessWidget implements PreferredSize {
   final int number;
   VoidCallback? onTap;
+  bool? needIcon;
   CustomAppbar({
     Key? key,
     required this.number,
     this.onTap,
+    this.needIcon,
   }) : super(key: key);
 
   @override
@@ -30,6 +33,16 @@ class CustomAppbar extends StatelessWidget implements PreferredSize {
         height: 50.h,
         fit: BoxFit.cover,
       ),
+      leading: needIcon == true
+          ? IconButton(
+              onPressed: () {
+                context.pop();
+              },
+              icon: Icon(
+                IconlyLight.arrowLeftSquare,
+                color: AppColors.darkOrangeColor,
+              ))
+          : const SizedBox(),
       actions: [
         number == 1
             ? iconSearch()

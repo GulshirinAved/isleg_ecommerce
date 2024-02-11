@@ -36,8 +36,7 @@ class FavoriteScreen extends StatelessWidget {
                   width: MediaQuery.of(context).size.width,
                   height: MediaQuery.of(context).size.height,
                   child: GridView.builder(
-                    padding:
-                        const EdgeInsets.only(top: 10, left: 20, right: 10),
+                    padding: const EdgeInsets.only(top: 10, left: 10),
                     physics: const BouncingScrollPhysics(),
                     shrinkWrap: true,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -46,8 +45,8 @@ class FavoriteScreen extends StatelessWidget {
                     ),
                     itemCount: state.favList.length,
                     itemBuilder: (context, index) {
-                      final cartItem = index < cartstate.cartList.length
-                          ? cartstate.cartList[index]
+                      final cartItem = index < cartstate.cartList!.length
+                          ? cartstate.cartList![index]
                           : CartItem(
                               id: state.favList[index].favId,
                               name: state.favList[index].favName,

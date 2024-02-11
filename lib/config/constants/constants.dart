@@ -5,7 +5,6 @@ String logoImages = 'assets/logo/logo.svg';
 String search = 'assets/icons/search.svg';
 String heart = 'assets/icons/heart.svg';
 String emptyCart = 'assets/icons/empty_cart.svg';
-
 String cart = 'assets/icons/cart.svg';
 String profile = 'assets/icons/profile.svg';
 String setting = 'assets/icons/setting.svg';
@@ -15,6 +14,8 @@ String message = 'assets/icons/message.svg';
 String info = 'assets/icons/info.svg';
 String logout = 'assets/icons/logout.svg';
 String arrowRight = 'assets/icons/arrowRight.svg';
+String sort = 'assets/icons/sort.svg';
+
 String productImage = 'assets/images/image.png';
 String personImage = 'assets/images/person.png';
 //list icons

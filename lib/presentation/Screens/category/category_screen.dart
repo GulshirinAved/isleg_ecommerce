@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:isleg_ecommerce/blocs/home/category_bloc/categery_selection_state.dart';
 import 'package:isleg_ecommerce/blocs/home/category_bloc/category_selection_bloc.dart';
 import 'package:isleg_ecommerce/config/constants/constants.dart';
@@ -95,7 +96,19 @@ class CategoryScreen extends StatelessWidget {
               children: [
                 for (int i = 0; i < categoryNames.length; i++)
                   Center(
-                    child: Text('page $i'),
+                    child: GestureDetector(
+                      onTap: () {
+                        context.pushNamed(
+                          'categoryProduct',
+                        );
+                      },
+                      child: BlocBuilder<CategorySelectionBloc,
+                          CategorySelectionState>(
+                        builder: (context, state) {
+                          return Text('page ${state.stateIndex}');
+                        },
+                      ),
+                    ),
                   ),
               ],
             ),

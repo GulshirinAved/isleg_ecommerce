@@ -15,6 +15,7 @@ import 'package:isleg_ecommerce/data/models/favItem_model.dart';
 import 'package:isleg_ecommerce/presentation/Screens/bottomNavBar/bottomNavBar_screen.dart';
 import 'package:isleg_ecommerce/presentation/Screens/cart/cart_screen.dart';
 import 'package:isleg_ecommerce/presentation/Screens/cart/checkUp_screen.dart';
+import 'package:isleg_ecommerce/presentation/Screens/category/categoryProducts_screen.dart';
 import 'package:isleg_ecommerce/presentation/Screens/category/category_screen.dart';
 import 'package:isleg_ecommerce/presentation/Screens/favorite/favorite_screen.dart';
 import 'package:isleg_ecommerce/presentation/Screens/home/home_screen.dart';
@@ -81,6 +82,15 @@ class AppRouter {
                     child: const CategoryScreen(),
                   );
                 },
+                routes: [
+                  GoRoute(
+                    path: 'categoryProduct',
+                    name: 'categoryProduct',
+                    builder: (context, state) {
+                      return CategoryProductsScreen();
+                    },
+                  ),
+                ],
               ),
               GoRoute(
                 path: 'productProfile',
@@ -93,11 +103,14 @@ class AppRouter {
                   final String productImages =
                       extraData?['productImages'] as String;
                   final int index = extraData?['index'] as int;
-                  return ProductProfileScreen(
-                    favItem: favItem,
-                    cartItem: cartItem,
-                    productImages: productImages,
-                    index: index,
+                  return BlocProvider.value(
+                    value: context.read<CartBloc>(),
+                    child: ProductProfileScreen(
+                      favItem: favItem,
+                      cartItem: cartItem,
+                      productImages: productImages,
+                      index: index,
+                    ),
                   );
                 },
               ),

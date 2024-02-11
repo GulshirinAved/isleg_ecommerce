@@ -8,6 +8,7 @@ import 'package:isleg_ecommerce/config/theme/theme.dart';
 
 class CartButton extends StatelessWidget {
   final cartItem;
+
   const CartButton({
     Key? key,
     required this.cartItem,
@@ -15,19 +16,21 @@ class CartButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 35.w,
-      width: 35.w,
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        color: AppColors.darkOrangeColor,
-      ),
-      child: BlocConsumer<CartBloc, CartState>(
-        listener: (context, state) {},
-        builder: (context, state) {
-          return IconButton(
+    return BlocBuilder<CartBloc, CartState>(
+      builder: (context, state) {
+        final isItemInCart =
+            state.cartList.any((item) => item.id == cartItem.id);
+
+        return Container(
+          height: 35.w,
+          width: 35.w,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: AppColors.darkOrangeColor,
+          ),
+          child: IconButton(
             onPressed: () {
-              if (state.cartList.contains(cartItem) == false) {
+              if (!isItemInCart) {
                 context.read<CartBloc>().add(AddCartEvent(cartItem: cartItem));
               }
             },
@@ -36,9 +39,9 @@ class CartButton extends StatelessWidget {
               color: AppColors.whiteColor,
               size: 18.h,
             ),
-          );
-        },
-      ),
+          ),
+        );
+      },
     );
   }
 }

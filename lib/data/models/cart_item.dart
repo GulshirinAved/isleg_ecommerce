@@ -33,6 +33,28 @@ class CartItem {
     );
   }
 
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'id': id,
+      'name': name,
+      'price': price,
+      'previous_price': previous_price,
+      'isNew': isNew,
+      'quantity': quantity,
+    };
+  }
+
+  factory CartItem.fromMap(Map<String, dynamic> map) {
+    return CartItem(
+      id: map['id'] as int,
+      name: map['name'] as String,
+      price: map['price'] as String,
+      previous_price: map['previous_price'] as String,
+      isNew: map['isNew'] as bool,
+      quantity: map['quantity'] as int,
+    );
+  }
+
   @override
   bool operator ==(covariant CartItem other) {
     if (identical(this, other)) return true;

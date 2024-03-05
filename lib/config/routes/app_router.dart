@@ -21,6 +21,7 @@ import 'package:isleg_ecommerce/presentation/Screens/favorite/favorite_screen.da
 import 'package:isleg_ecommerce/presentation/Screens/home/home_screen.dart';
 import 'package:isleg_ecommerce/presentation/Screens/home/productProfile_screen.dart';
 import 'package:isleg_ecommerce/presentation/Screens/profile/profile_screen.dart';
+import 'package:isleg_ecommerce/presentation/Screens/signUp/login_screen.dart';
 import 'package:isleg_ecommerce/presentation/Screens/signUp/signup_screen.dart';
 
 class AppRouter {
@@ -87,7 +88,7 @@ class AppRouter {
                     path: 'categoryProduct',
                     name: 'categoryProduct',
                     builder: (context, state) {
-                      return CategoryProductsScreen();
+                      return const CategoryProductsScreen();
                     },
                   ),
                 ],
@@ -190,6 +191,16 @@ class AppRouter {
                   ],
                   child: const SignUpScreen(),
                 ),
+                routes: [
+                  GoRoute(
+                    path: 'login',
+                    name: 'login',
+                    builder: (context, state) => BlocProvider(
+                      create: (context) => PasswordObscureBloc(),
+                      child: const LoginScreen(),
+                    ),
+                  ),
+                ],
               ),
             ],
           ),

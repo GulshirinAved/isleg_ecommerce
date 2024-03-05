@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:isleg_ecommerce/config/constants/constants.dart';
+import 'package:go_router/go_router.dart';
 import 'package:isleg_ecommerce/presentation/CustomWidgets/custom_appbar.dart';
 import 'package:isleg_ecommerce/presentation/Screens/profile/component/personsData.dart';
 import 'package:isleg_ecommerce/presentation/Screens/profile/component/profile_tile.dart';
@@ -15,14 +15,43 @@ class ProfileScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           const PersonData(),
-          ListView.builder(
-            shrinkWrap: true,
-            itemCount: profileTiles.length,
-            itemExtent: 60,
-            itemBuilder: (context, index) => Container(
-              margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 2),
-              child: ProfileTile(index: index),
-            ),
+          Column(
+            children: [
+              ProfileTile(
+                index: 0,
+                onTap: () {},
+              ),
+              ProfileTile(
+                index: 1,
+                onTap: () {},
+              ),
+              ProfileTile(
+                index: 2,
+                onTap: () {},
+              ),
+              ProfileTile(
+                index: 3,
+                onTap: () {},
+              ),
+              ProfileTile(
+                index: 4,
+                onTap: () {},
+              ),
+              ProfileTile(
+                index: 5,
+                onTap: () {},
+              ),
+              ProfileTile(
+                index: 6,
+                onTap: () {},
+              ),
+              ProfileTile(
+                index: 7,
+                onTap: () {
+                  context.pushNamed('signup');
+                },
+              ),
+            ],
           ),
         ],
       ),

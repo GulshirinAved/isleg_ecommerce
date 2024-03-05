@@ -37,8 +37,8 @@ class TextFields extends StatelessWidget {
       child: Row(
         children: [
           Container(
-            width: 29.5.w,
-            margin: EdgeInsets.only(left: 17.w, bottom: 9.h),
+            width: 30.5.w,
+            margin: EdgeInsets.only(left: 14.w, bottom: 9.h),
             height: 16.w,
             child: prefixIcon,
           ),

@@ -1,3 +1,9 @@
+//host
+const String host = '192.168.21.71:8000';
+
+///url
+const String url = 'http://$host/api/';
+
 ///images
 String logoImages = 'assets/logo/logo.svg';
 
@@ -48,12 +54,6 @@ List<dynamic> categoryNames = [
     'icon': 'assets/icons/car.svg',
     'name': 'Awtoulag',
   },
-];
-//list slider images
-List sliderImages = [
-  'assets/slider_images/1.avif',
-  'assets/slider_images/2.avif',
-  'assets/slider_images/3.avif',
 ];
 //product list
 List productList = [

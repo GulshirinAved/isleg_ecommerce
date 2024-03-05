@@ -45,8 +45,8 @@ class FavoriteScreen extends StatelessWidget {
                     ),
                     itemCount: state.favList.length,
                     itemBuilder: (context, index) {
-                      final cartItem = index < cartstate.cartList!.length
-                          ? cartstate.cartList![index]
+                      final cartItem = index < cartstate.cartList.length
+                          ? cartstate.cartList[index]
                           : CartItem(
                               id: state.favList[index].favId,
                               name: state.favList[index].favName,

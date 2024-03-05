@@ -9,7 +9,6 @@ import 'package:isleg_ecommerce/data/models/cart_item.dart';
 import 'package:isleg_ecommerce/data/models/favItem_model.dart';
 import 'package:isleg_ecommerce/presentation/CustomWidgets/custom_appbar.dart';
 import 'package:isleg_ecommerce/presentation/CustomWidgets/product_card.dart';
-import 'package:isleg_ecommerce/presentation/Screens/cart/components/divider.dart';
 import 'package:isleg_ecommerce/presentation/Screens/category/components/filtering.dart';
 import 'package:isleg_ecommerce/presentation/Screens/category/components/mainTitle.dart';
 import 'package:isleg_ecommerce/presentation/Screens/category/components/sorting.dart';

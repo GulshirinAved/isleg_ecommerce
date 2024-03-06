@@ -6,6 +6,7 @@ const String url = 'http://$host/api/';
 
 ///images
 String logoImages = 'assets/logo/logo.svg';
+String logoBlackImage = 'assets/logo/logoName.svg';
 
 //icons
 String search = 'assets/icons/search.svg';

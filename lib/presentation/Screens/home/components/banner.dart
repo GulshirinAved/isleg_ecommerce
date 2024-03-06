@@ -4,6 +4,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:isleg_ecommerce/blocs/home/banner/banner_bloc.dart';
 import 'package:isleg_ecommerce/blocs/home/banner_indicator/banner_indicator_bloc.dart';
 import 'package:isleg_ecommerce/config/constants/constants.dart';
@@ -70,12 +71,14 @@ class _ImageSliderState extends State<ImageSlider> {
               child: Text(state.error!),
             );
           } else if (state is BannerInitial) {
-            return const Center(
-              child: CircularProgressIndicator(),
+            return SizedBox(
+              height: MediaQuery.of(context).size.height / 4,
+              width: double.infinity,
             );
           } else if (state is BannerLoading) {
-            return const Center(
-              child: CircularProgressIndicator(),
+            return SizedBox(
+              height: MediaQuery.of(context).size.height / 4,
+              width: double.infinity,
             );
           } else if (state is BannerLoaded) {
             return Padding(
@@ -98,6 +101,12 @@ class _ImageSliderState extends State<ImageSlider> {
                           imageUrl:
                               'http://$host/${state.bannerList[index].image}',
                           fit: BoxFit.cover,
+                          placeholder: (context, url) {
+                            return Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: SvgPicture.asset(logoBlackImage),
+                            );
+                          },
                         );
                       },
                     ),
@@ -154,8 +163,12 @@ class _ImageSliderState extends State<ImageSlider> {
               ),
             );
           } else {
-            return Container(
-              color: Colors.amber,
+            return Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: SizedBox(
+                height: MediaQuery.of(context).size.height / 4,
+                width: double.infinity,
+              ),
             );
           }
         },

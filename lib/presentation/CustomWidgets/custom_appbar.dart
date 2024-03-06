@@ -64,12 +64,11 @@ class CustomAppbar extends StatelessWidget implements PreferredSize {
               context.read<CartBloc>().add(
                     RemoveCartAllEvent(
                       cartItem: CartItem(
-                        id: 1,
-                        name: '',
-                        price: '',
-                        previous_price: '',
-                        isNew: false,
-                      ),
+                          id: '1',
+                          name: '',
+                          price: '',
+                          previous_price: '',
+                          image: productImage),
                     ),
                   );
             },

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:isleg_ecommerce/presentation/CustomWidgets/custom_appbar.dart';
+import 'package:isleg_ecommerce/presentation/Screens/home/components/actionProduct.dart';
 import 'package:isleg_ecommerce/presentation/Screens/home/components/banner.dart';
 import 'package:isleg_ecommerce/presentation/Screens/home/components/categoryScroll_card.dart';
 import 'package:isleg_ecommerce/presentation/Screens/home/components/saleProducts.dart';
-import 'package:isleg_ecommerce/presentation/Screens/home/components/newProduct.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -22,7 +22,7 @@ class HomeScreen extends StatelessWidget {
             ),
             ImageSlider(),
             SaleProducts(),
-            NewProducts(),
+            ActionProducts()
           ],
         ),
       ),

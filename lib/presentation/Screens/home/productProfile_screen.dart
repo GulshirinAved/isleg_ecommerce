@@ -31,9 +31,9 @@ class ProductProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cartList =
-        context.select((CartBloc cartBloc) => cartBloc.state.cartList);
-    final bool itemInCart = cartList.contains(cartItem);
+    // final cartList =
+    //     context.select((CartBloc cartBloc) => cartBloc.state.cartList);
+    // final bool itemInCart = cartList.contains(cartItem);
 
     return Scaffold(
       appBar: CustomAppbar(number: 3),
@@ -167,7 +167,8 @@ class ProductProfileScreen extends StatelessWidget {
 
                           if (itemInCart) {
                             final int index = state.cartList.indexWhere(
-                                (element) => element.id == cartItem.id);
+                              (element) => element.id == cartItem.id,
+                            );
                             if (index != -1) {
                               return CartCountButton(
                                 cartItem: state.cartList[index],

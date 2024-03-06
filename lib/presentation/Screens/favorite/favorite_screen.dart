@@ -53,7 +53,7 @@ class FavoriteScreen extends StatelessWidget {
                               price: state.favList[index].favPrice,
                               previous_price:
                                   state.favList[index].favPrevious_price,
-                              isNew: state.favList[index].favIsNew,
+                              image: productImage,
                             );
 
                       return Container(
@@ -61,7 +61,6 @@ class FavoriteScreen extends StatelessWidget {
                         child: BlocBuilder<CartBloc, CartState>(
                           builder: (context, cartstate) {
                             return ProductCard(
-                              favList: state.favList,
                               index: index,
                               favItem: FavItem(
                                 favId: state.favList[index].favId,
@@ -69,7 +68,7 @@ class FavoriteScreen extends StatelessWidget {
                                 favPrice: state.favList[index].favPrice,
                                 favPrevious_price:
                                     state.favList[index].favPrevious_price,
-                                favIsNew: state.favList[index].favIsNew,
+                                image: productImage,
                               ),
                               cartItem: cartItem,
                             );

@@ -12,7 +12,6 @@ import 'package:isleg_ecommerce/presentation/CustomWidgets/product_card.dart';
 import 'package:isleg_ecommerce/presentation/Screens/category/components/filtering.dart';
 import 'package:isleg_ecommerce/presentation/Screens/category/components/mainTitle.dart';
 import 'package:isleg_ecommerce/presentation/Screens/category/components/sorting.dart';
-import 'package:isleg_ecommerce/presentation/Screens/home/components/productBanner_card.dart';
 
 class CategoryProductsScreen extends StatelessWidget {
   const CategoryProductsScreen({
@@ -60,35 +59,30 @@ class CategoryProductsScreen extends StatelessWidget {
                   mainAxisExtent: 215.h,
                 ),
                 itemBuilder: (context, index) {
-                  return productList[index]['isNew'] == false
-                      ? Container(
-                          margin: const EdgeInsets.only(bottom: 10),
-                          child: BlocBuilder<FavButtonBloc, FavButtonState>(
-                            builder: (context, state) {
-                              return ProductCard(
-                                favList: state.favList,
-                                favItem: FavItem(
-                                  favId: productList[index]['id'],
-                                  favName: productList[index]['name'],
-                                  favPrice: productList[index]['price'],
-                                  favPrevious_price: productList[index]
-                                      ['previous_price'],
-                                  favIsNew: productList[index]['isNew'],
-                                ),
-                                cartItem: CartItem(
-                                  id: productList[index]['id'],
-                                  name: productList[index]['name'],
-                                  price: productList[index]['price'],
-                                  previous_price: productList[index]
-                                      ['previous_price'],
-                                  isNew: productList[index]['isNew'],
-                                ),
-                                index: index,
-                              );
-                            },
-                          ),
-                        )
-                      : ProductCardBanner(index: index);
+                  return Container(
+                    margin: const EdgeInsets.only(bottom: 10),
+                    child: BlocBuilder<FavButtonBloc, FavButtonState>(
+                      builder: (context, state) {
+                        return ProductCard(
+                          favItem: FavItem(
+                              favId: productList[index]['id'],
+                              favName: productList[index]['name'],
+                              favPrice: productList[index]['price'],
+                              favPrevious_price: productList[index]
+                                  ['previous_price'],
+                              image: personImage),
+                          cartItem: CartItem(
+                              id: productList[index]['id'],
+                              name: productList[index]['name'],
+                              price: productList[index]['price'],
+                              previous_price: productList[index]
+                                  ['previous_price'],
+                              image: productImage),
+                          index: index,
+                        );
+                      },
+                    ),
+                  );
                 },
               ),
             ),

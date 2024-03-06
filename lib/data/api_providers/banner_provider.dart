@@ -12,6 +12,7 @@ class BannerProvider {
         final List bannerList = response.data['banners']
             .map((json) => BannerModel.fromJson(json))
             .toList();
+
         return bannerList;
       } else {
         return [];

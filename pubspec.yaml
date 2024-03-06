@@ -28,7 +28,6 @@ flutter:
   assets:
     - assets/logo/
     - assets/icons/
-    - assets/slider_images/
     - assets/images/
   fonts:
     - family: TT Norms Pro Medium

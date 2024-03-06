@@ -1,33 +1,17 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 class FavItem {
-  final int favId;
+  final String favId;
   final String favName;
   final String favPrice;
   final String favPrevious_price;
-  final bool favIsNew;
+  final String image;
   FavItem({
     required this.favId,
     required this.favName,
     required this.favPrice,
     required this.favPrevious_price,
-    required this.favIsNew,
+    required this.image,
   });
-
-  FavItem copyWith({
-    int? favId,
-    String? favName,
-    String? favPrice,
-    String? favPrevious_price,
-    bool? favIsNew,
-  }) {
-    return FavItem(
-      favId: favId ?? this.favId,
-      favName: favName ?? this.favName,
-      favPrice: favPrice ?? this.favPrice,
-      favPrevious_price: favPrevious_price ?? this.favPrevious_price,
-      favIsNew: favIsNew ?? this.favIsNew,
-    );
-  }
 
   @override
   bool operator ==(covariant FavItem other) {
@@ -37,7 +21,7 @@ class FavItem {
         other.favName == favName &&
         other.favPrice == favPrice &&
         other.favPrevious_price == favPrevious_price &&
-        other.favIsNew == favIsNew;
+        other.image == image;
   }
 
   @override
@@ -46,6 +30,22 @@ class FavItem {
         favName.hashCode ^
         favPrice.hashCode ^
         favPrevious_price.hashCode ^
-        favIsNew.hashCode;
+        image.hashCode;
+  }
+
+  FavItem copyWith({
+    String? favId,
+    String? favName,
+    String? favPrice,
+    String? favPrevious_price,
+    String? image,
+  }) {
+    return FavItem(
+      favId: favId ?? this.favId,
+      favName: favName ?? this.favName,
+      favPrice: favPrice ?? this.favPrice,
+      favPrevious_price: favPrevious_price ?? this.favPrevious_price,
+      image: image ?? this.image,
+    );
   }
 }

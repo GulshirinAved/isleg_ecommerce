@@ -32,12 +32,11 @@ class CartScreen extends StatelessWidget {
             itemBuilder: (context, index) {
               return CartCard(
                 cartItem: CartItem(
-                  id: state.cartList[index].id,
-                  name: state.cartList[index].name,
-                  price: state.cartList[index].price,
-                  previous_price: state.cartList[index].previous_price,
-                  isNew: state.cartList[index].isNew,
-                ),
+                    id: state.cartList[index].id,
+                    name: state.cartList[index].name,
+                    price: state.cartList[index].price,
+                    previous_price: state.cartList[index].previous_price,
+                    image: productImage),
                 index: index,
               );
             },

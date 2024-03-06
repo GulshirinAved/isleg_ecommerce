@@ -6,16 +6,14 @@ import 'package:isleg_ecommerce/data/models/favItem_model.dart';
 import 'package:isleg_ecommerce/presentation/CustomWidgets/product_card.dart';
 import 'package:isleg_ecommerce/presentation/Screens/home/components/topTitle.dart';
 
-class SaleProducts extends StatefulWidget {
-  const SaleProducts({
-    super.key,
-  });
+class ActionProducts extends StatefulWidget {
+  const ActionProducts({super.key});
 
   @override
-  State<SaleProducts> createState() => _SaleProductsState();
+  State<ActionProducts> createState() => _ActionProductsState();
 }
 
-class _SaleProductsState extends State<SaleProducts> {
+class _ActionProductsState extends State<ActionProducts> {
   final HomeCategoryBloc _homeCategoryBloc = HomeCategoryBloc();
   @override
   void initState() {
@@ -48,10 +46,10 @@ class _SaleProductsState extends State<SaleProducts> {
               child: Text('It is loading'),
             );
           } else if (state is HomeCategoryLoaded) {
-            List salesProducts = state.homeCategoryList[0].products;
+            List salesProducts = state.homeCategoryList[1].products;
             return Column(
               children: [
-                TopTitle(title: state.homeCategoryList[0].name),
+                TopTitle(title: state.homeCategoryList[1].name),
                 Container(
                   alignment: Alignment.topLeft,
                   height: 250,

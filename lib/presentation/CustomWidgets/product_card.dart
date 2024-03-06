@@ -1,6 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:isleg_ecommerce/config/constants/constants.dart';
@@ -11,14 +13,12 @@ import 'package:isleg_ecommerce/presentation/CustomWidgets/cart_button.dart';
 import 'package:isleg_ecommerce/presentation/CustomWidgets/fav_button.dart';
 
 class ProductCard extends StatelessWidget {
-  final List favList;
   final int index;
   final FavItem favItem;
   final CartItem cartItem;
 
   const ProductCard({
     required this.favItem,
-    required this.favList,
     required this.cartItem,
     required this.index,
     Key? key,
@@ -61,9 +61,15 @@ class ProductCard extends StatelessWidget {
               height: 130.h,
               width: 200.w,
               alignment: Alignment.center,
-              child: Image.asset(
-                productImage,
+              child: CachedNetworkImage(
+                imageUrl: 'http://$host/${favItem.image}',
                 fit: BoxFit.cover,
+                placeholder: (context, url) => Container(
+                  height: 130.h,
+                  width: 200.w,
+                  margin: const EdgeInsets.all(20),
+                  child: SvgPicture.asset(logoBlackImage),
+                ),
               ),
             ),
             Positioned.fill(

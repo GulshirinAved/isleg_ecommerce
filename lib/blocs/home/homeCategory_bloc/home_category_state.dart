@@ -13,12 +13,10 @@ final class HomeCategoryLoading extends HomeCategoryState {}
 
 final class HomeCategoryLoaded extends HomeCategoryState {
   final List<dynamic> homeCategoryList;
-
   const HomeCategoryLoaded({required this.homeCategoryList});
 }
 
 final class HomeCategoryError extends HomeCategoryState {
   final String? error;
-
   const HomeCategoryError({required this.error});
 }

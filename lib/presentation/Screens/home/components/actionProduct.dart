@@ -64,8 +64,8 @@ class _ActionProductsState extends State<ActionProducts> {
                         favItem: FavItem(
                           favId: salesProducts[index].id,
                           favName: salesProducts[index]
-                              .translations[0]
-                              .ru
+                              .translations[1]
+                              .tm
                               .name
                               .toString(),
                           favPrice: salesProducts[index].price.toString(),
@@ -75,8 +75,8 @@ class _ActionProductsState extends State<ActionProducts> {
                         cartItem: CartItem(
                           id: salesProducts[index].id,
                           name: salesProducts[index]
-                              .translations[0]
-                              .ru
+                              .translations[1]
+                              .tm
                               .name
                               .toString(),
                           price: 'previous price',

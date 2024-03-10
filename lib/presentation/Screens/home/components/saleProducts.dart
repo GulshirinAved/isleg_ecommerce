@@ -48,6 +48,11 @@ class _SaleProductsState extends State<SaleProducts> {
               child: Text('It is loading'),
             );
           } else if (state is HomeCategoryLoaded) {
+            if (state.homeCategoryList.isEmpty) {
+              return const Center(
+                child: Text('No data'),
+              );
+            }
             List salesProducts = state.homeCategoryList[0].products;
             return Column(
               children: [
@@ -59,15 +64,15 @@ class _SaleProductsState extends State<SaleProducts> {
                   child: ListView.builder(
                     padding: const EdgeInsets.all(8),
                     scrollDirection: Axis.horizontal,
-                    itemCount: 4,
+                    itemCount: salesProducts.length,
                     itemBuilder: (context, index) {
                       return ProductCard(
                         index: index,
                         favItem: FavItem(
                           favId: salesProducts[index].id,
                           favName: salesProducts[index]
-                              .translations[0]
-                              .ru
+                              .translations[1]
+                              .tm
                               .name
                               .toString(),
                           favPrice: salesProducts[index].price.toString(),
@@ -77,8 +82,8 @@ class _SaleProductsState extends State<SaleProducts> {
                         cartItem: CartItem(
                           id: salesProducts[index].id,
                           name: salesProducts[index]
-                              .translations[0]
-                              .ru
+                              .translations[1]
+                              .tm
                               .name
                               .toString(),
                           price: 'previous price',

@@ -96,7 +96,7 @@ class Brend {
 
 class Translation {
   Ru? ru;
-  Ru? tm;
+  Tm? tm;
 
   Translation({
     this.ru,
@@ -105,7 +105,7 @@ class Translation {
 
   factory Translation.fromJson(Map<String, dynamic> json) => Translation(
         ru: json['ru'] == null ? null : Ru.fromJson(json['ru']),
-        tm: json['tm'] == null ? null : Ru.fromJson(json['tm']),
+        tm: json['tm'] == null ? null : Tm.fromJson(json['tm']),
       );
 
   Map<String, dynamic> toJson() => {
@@ -124,6 +124,26 @@ class Ru {
   });
 
   factory Ru.fromJson(Map<String, dynamic> json) => Ru(
+        name: json['name'] ?? 'null',
+        description: json['description'] ?? 'null',
+      );
+
+  Map<String, dynamic> toJson() => {
+        'name': name,
+        'description': description,
+      };
+}
+
+class Tm {
+  String? name;
+  String? description;
+
+  Tm({
+    this.name,
+    this.description,
+  });
+
+  factory Tm.fromJson(Map<String, dynamic> json) => Tm(
         name: json['name'] ?? 'null',
         description: json['description'] ?? 'null',
       );

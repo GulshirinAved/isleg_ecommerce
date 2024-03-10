@@ -58,17 +58,20 @@ class ProductCard extends StatelessWidget {
               ),
             ),
             Container(
-              height: 130.h,
+              height: 120.h,
               width: 200.w,
               alignment: Alignment.center,
               child: CachedNetworkImage(
                 imageUrl: 'http://$host/${favItem.image}',
                 fit: BoxFit.cover,
                 placeholder: (context, url) => Container(
-                  height: 130.h,
+                  height: 120.h,
                   width: 200.w,
                   margin: const EdgeInsets.all(20),
-                  child: SvgPicture.asset(logoBlackImage),
+                  child: SvgPicture.asset(
+                    logoBlackImage,
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
             ),

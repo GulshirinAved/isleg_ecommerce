@@ -22,7 +22,7 @@ class HomeScreen extends StatelessWidget {
             ),
             ImageSlider(),
             SaleProducts(),
-            ActionProducts()
+            ActionProducts(),
           ],
         ),
       ),

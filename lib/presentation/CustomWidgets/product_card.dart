@@ -32,7 +32,6 @@ class ProductCard extends StatelessWidget {
           'productProfile',
           extra: {
             'favItem': favItem,
-            'productImages': productImage,
             'cartItem': cartItem,
             'index': index,
           },

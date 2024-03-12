@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:go_router/go_router.dart';
+import 'package:isleg_ecommerce/app_localization.dart';
 import 'package:isleg_ecommerce/blocs/bottomNavBar/bottomNavBar/bottom_nav_bar_bloc.dart';
 import 'package:isleg_ecommerce/blocs/carts/cart/cart_bloc.dart';
 import 'package:isleg_ecommerce/config/constants/constants.dart';
@@ -31,38 +32,41 @@ class BottomNavBar extends StatelessWidget {
             selectedItemColor: AppColors.darkOrangeColor,
             selectedLabelStyle: TextStyle(color: AppColors.darkGreyColor),
             unselectedLabelStyle: TextStyle(color: AppColors.darkGreyColor),
-            items: bottomtabs,
+            items: bottomtabs(context),
           ),
         );
       },
     );
   }
+}
 
-  var bottomtabs = [
-    const BottomNavigationBarItem(
-      icon: Icon(IconlyBold.home),
-      label: 'Baş sahypa',
+List<BottomNavigationBarItem> bottomtabs(BuildContext context) {
+  return [
+    BottomNavigationBarItem(
+      icon: const Icon(IconlyBold.home),
+      label: AppLocalization.of(context).getTransatedValues('homePage') ?? '',
     ),
-    const BottomNavigationBarItem(
-      icon: Icon(Icons.favorite),
-      label: 'Halanlam',
+    BottomNavigationBarItem(
+      icon: const Icon(Icons.favorite),
+      label:
+          AppLocalization.of(context).getTransatedValues('myFavorites') ?? '',
     ),
     BottomNavigationBarItem(
       icon: BlocBuilder<CartBloc, CartState>(
         builder: (context, state) {
-          return state.cartList.length == 0
-              ? Icon(IconlyBold.buy)
+          return state.cartList.isEmpty
+              ? const Icon(IconlyBold.buy)
               : Badge(
                   label: Text(state.cartList.length.toString()),
                   child: const Icon(IconlyBold.buy),
                 );
         },
       ),
-      label: 'Sebet',
+      label: AppLocalization.of(context).getTransatedValues('cart') ?? '',
     ),
-    const BottomNavigationBarItem(
-      icon: Icon(IconlyBold.profile),
-      label: 'Profil',
+    BottomNavigationBarItem(
+      icon: const Icon(IconlyBold.profile),
+      label: AppLocalization.of(context).getTransatedValues('profile') ?? '',
     ),
   ];
 }

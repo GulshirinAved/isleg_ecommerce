@@ -5,14 +5,18 @@ import 'package:isleg_ecommerce/data/models/homeCategory_model.dart';
 
 class HomeCategoryProvider {
   Dio dio = Dio();
-  final String _homecategoryUrl = '${url}tm/homepage-categories';
   Box dataBox = Hive.box('dataBox');
+  Box langBox = Hive.box('lang');
+
   List<dynamic> cachedList = [];
 
   Future<List<dynamic>> fetchHomeCategory() async {
+    final String lang = langBox.get('lang');
+    final String homecategoryUrl = '$url$lang/homepage-categories';
+
     try {
       if (dataBox.isEmpty) {
-        final Response response = await dio.get(_homecategoryUrl);
+        final Response response = await dio.get(homecategoryUrl);
         final List<dynamic> homeCategoryList = response
             .data['homepage_categories']
             .map((json) => HomeCategoryModel.fromJson(json))

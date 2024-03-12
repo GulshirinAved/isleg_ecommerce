@@ -65,19 +65,21 @@ class CategoryProductsScreen extends StatelessWidget {
                       builder: (context, state) {
                         return ProductCard(
                           favItem: FavItem(
-                              favId: productList[index]['id'],
-                              favName: productList[index]['name'],
-                              favPrice: productList[index]['price'],
-                              favPrevious_price: productList[index]
-                                  ['previous_price'],
-                              image: personImage),
+                            favId: productList[index]['id'],
+                            favName: productList[index]['name'],
+                            favPrice: productList[index]['price'],
+                            favPrevious_price: productList[index]
+                                ['previous_price'],
+                            image: personImage,
+                          ),
                           cartItem: CartItem(
-                              id: productList[index]['id'],
-                              name: productList[index]['name'],
-                              price: productList[index]['price'],
-                              previous_price: productList[index]
-                                  ['previous_price'],
-                              image: productImage),
+                            id: productList[index]['id'],
+                            name: productList[index]['name'],
+                            price: productList[index]['price'],
+                            previous_price: productList[index]
+                                ['previous_price'],
+                            image: productImage,
+                          ),
                           index: index,
                         );
                       },

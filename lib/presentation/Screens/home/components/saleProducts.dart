@@ -53,7 +53,7 @@ class _SaleProductsState extends State<SaleProducts> {
                 child: Text('No data'),
               );
             }
-            List salesProducts = state.homeCategoryList[0].products;
+            final List salesProducts = state.homeCategoryList[0].products;
             return Column(
               children: [
                 TopTitle(title: state.homeCategoryList[0].name),

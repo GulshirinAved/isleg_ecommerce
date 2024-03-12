@@ -101,15 +101,12 @@ class AppRouter {
                       state.extra as Map<String, dynamic>?;
                   final FavItem favItem = extraData?['favItem'] as FavItem;
                   final CartItem cartItem = extraData?['cartItem'] as CartItem;
-                  final String productImages =
-                      extraData?['productImages'] as String;
                   final int index = extraData?['index'] as int;
                   return BlocProvider.value(
                     value: context.read<CartBloc>(),
                     child: ProductProfileScreen(
                       favItem: favItem,
                       cartItem: cartItem,
-                      productImages: productImages,
                       index: index,
                     ),
                   );

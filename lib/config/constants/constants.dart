@@ -165,12 +165,12 @@ List deliveryTime = [
 ];
 //profile tile
 List<Map<String, dynamic>> profileTiles = [
-  {'icon': profile, 'title': 'Ulanyjy'},
-  {'icon': setting, 'title': 'Sazlamalar'},
-  {'icon': cart, 'title': 'Sargytlarym'},
-  {'icon': language, 'title': 'Dil çalyşmak'},
-  {'icon': document, 'title': 'Eltip berme we töleg'},
-  {'icon': message, 'title': 'Habarlaşmak'},
-  {'icon': info, 'title': 'Biz barada'},
-  {'icon': logout, 'title': 'Çykmak'},
+  {'icon': profile, 'title': 'user'},
+  {'icon': setting, 'title': 'settings'},
+  {'icon': cart, 'title': 'myorders'},
+  {'icon': language, 'title': 'changeLanguage'},
+  {'icon': document, 'title': 'deliveryAndpayment'},
+  {'icon': message, 'title': 'contact'},
+  {'icon': info, 'title': 'aboutUs'},
+  {'icon': logout, 'title': 'logOut'},
 ];

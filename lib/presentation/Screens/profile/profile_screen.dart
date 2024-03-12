@@ -32,6 +32,7 @@ class ProfileScreen extends StatelessWidget {
               ProfileTile(
                 index: 3,
                 onTap: () {},
+                isLang: true,
               ),
               ProfileTile(
                 index: 4,

@@ -15,6 +15,7 @@ class HomeScreen extends StatelessWidget {
         number: 1,
       ),
       body: const SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
         child: Column(
           children: [
             CategoryCardScrolling(

@@ -15,12 +15,16 @@ class CategoryInitialEvent extends CategoryEvent {
   List<Object> get props => [categoryList];
 }
 
+// ignore: must_be_immutable
 class CategoryExpandEvent extends CategoryEvent {
   final List<bool> categoryList;
   late bool isExpanded;
   late int index;
-  CategoryExpandEvent(
-      {required this.isExpanded,
-      required this.index,
-      required this.categoryList});
+  CategoryExpandEvent({
+    required this.isExpanded,
+    required this.index,
+    required this.categoryList,
+  });
+  @override
+  List<Object> get props => [isExpanded, index, categoryList];
 }

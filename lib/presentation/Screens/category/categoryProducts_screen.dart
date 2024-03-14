@@ -36,7 +36,6 @@ class CategoryProductsScreen extends StatelessWidget {
                 ),
               ),
               padding: const EdgeInsets.all(10),
-              // margin: const EdgeInsets.symmetric(horizontal: 2, vertical: 8),
               child: const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [

@@ -25,37 +25,7 @@ String sort = 'assets/icons/sort.svg';
 
 String productImage = 'assets/images/image.png';
 String personImage = 'assets/images/person.png';
-//list icons
-List<dynamic> categoryNames = [
-  {
-    'icon': 'assets/icons/idea.svg',
-    'name': 'Elektrik',
-  },
-  {
-    'icon': 'assets/icons/stationery.svg',
-    'name': 'Kanselýar',
-  },
-  {
-    'icon': 'assets/icons/balloons.svg',
-    'name': 'Sowgatlyk',
-  },
-  {
-    'icon': 'assets/icons/hoodie.svg',
-    'name': 'Egin eşik',
-  },
-  {
-    'icon': 'assets/icons/construction.svg',
-    'name': 'Gurluşyk',
-  },
-  {
-    'icon': 'assets/icons/armchair.svg',
-    'name': 'Mebel',
-  },
-  {
-    'icon': 'assets/icons/car.svg',
-    'name': 'Awtoulag',
-  },
-];
+
 //product list
 List productList = [
   {

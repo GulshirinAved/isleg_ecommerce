@@ -40,7 +40,7 @@ class _SaleProductsState extends State<SaleProducts> {
               child: Text(state.error.toString()),
             );
           } else if (state is HomeCategoryInitial) {
-            const Center(
+            return const Center(
               child: Text('It is initial'),
             );
           } else if (state is HomeCategoryLoading) {

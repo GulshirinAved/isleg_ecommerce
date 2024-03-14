@@ -8,8 +8,6 @@ class HomeCategoryProvider {
   Box dataBox = Hive.box('dataBox');
   Box langBox = Hive.box('lang');
 
-  List<dynamic> cachedList = [];
-
   Future<List<dynamic>> fetchHomeCategory() async {
     final String lang = langBox.get('lang');
     final String homecategoryUrl = '$url$lang/homepage-categories';

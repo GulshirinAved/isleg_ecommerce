@@ -15,7 +15,6 @@ class FavButtonBloc extends Bloc<FavButtonEvent, FavButtonState> {
           favList: updatedFavList,
         ),
       );
-      print(updatedFavList);
     });
     on<AddFavEvent>((event, emit) {
       updatedFavList = List.from(state.favList)..add(event.item);
@@ -24,7 +23,6 @@ class FavButtonBloc extends Bloc<FavButtonEvent, FavButtonState> {
           favList: updatedFavList,
         ),
       );
-      print(updatedFavList);
     });
   }
 }

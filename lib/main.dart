@@ -12,9 +12,12 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
   await Hive.openBox('dataBox');
+  await Hive.openBox('headerBox');
   await Hive.openBox('lang');
   final Box dataBox = Hive.box('dataBox');
+  final Box headerBox = Hive.box('headerBox');
   await dataBox.clear();
+  await headerBox.clear();
   runApp(
     BlocProvider(
       create: (context) => LanguageBloc()..add(InitialLanguageEvent()),

@@ -78,9 +78,15 @@ class AppRouter {
                 path: 'category',
                 name: 'category',
                 builder: (context, state) {
+                  final Map<String, dynamic>? extraData =
+                      state.extra as Map<String, dynamic>?;
+                  final List categoryList = extraData?['categoryList'] as List;
+
                   return BlocProvider<CategorySelectionBloc>.value(
                     value: context.read<CategorySelectionBloc>(),
-                    child: const CategoryScreen(),
+                    child: CategoryScreen(
+                      categoryList: categoryList,
+                    ),
                   );
                 },
                 routes: [

@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:isleg_ecommerce/blocs/category/category_bloc.dart';
 
-import 'package:isleg_ecommerce/blocs/home/category_bloc/categery_selection_state.dart';
-import 'package:isleg_ecommerce/blocs/home/category_bloc/category_selection_bloc.dart';
 import 'package:isleg_ecommerce/config/theme/theme.dart';
 import 'package:isleg_ecommerce/presentation/CustomWidgets/custom_appbar.dart';
 import 'package:isleg_ecommerce/presentation/Screens/category/components/categoryRight_side.dart';

@@ -21,88 +21,94 @@ class CategoryRight extends StatelessWidget {
     return Expanded(
       child: SingleChildScrollView(
         controller: pageController,
-        child: BlocBuilder<CategorySelectionBloc, CategorySelectionState>(
-          builder: (context, state) {
-            return ExpansionPanelList.radio(
-              expandedHeaderPadding: EdgeInsets.zero,
-              expansionCallback: (int index, bool isExpanded) {
-                final categoryList = state as CategoryInitialEvent;
-                context.read<CategoryBloc>().add(
-                      CategoryExpandEvent(
-                        isExpanded: isExpanded,
-                        index: index,
-                        categoryList: categoryList.categoryList,
-                      ),
-                    );
-              },
-              children: categoryList[state.stateIndex]
-                  .childCategory
-                  .map((e) {
-                    if (e.childCategory.isNotEmpty) {
-                      return ExpansionPanelRadio(
-                        headerBuilder: (context, isExpanded) => ListTile(
-                          title: Text(e.name.toString()),
-                          trailing: Icon(
-                            isExpanded
-                                ? IconlyLight.arrowUp2
-                                : IconlyLight.arrowDown2,
-                            size: 17,
+        child: BlocBuilder<CategoryBloc, CategoryState>(
+          builder: (context, stateCategory) {
+            return BlocBuilder<CategorySelectionBloc, CategorySelectionState>(
+              builder: (context, state) {
+                return ExpansionPanelList.radio(
+                  expandedHeaderPadding: EdgeInsets.zero,
+                  expansionCallback: (int index, bool isExpanded) {
+                    final categoryList =
+                        stateCategory as CategoryExpandingState;
+                    context.read<CategoryBloc>().add(
+                          CategoryExpandEvent(
+                            isExpanded: isExpanded,
+                            index: index,
+                            categoryList: categoryList.isOpen!,
                           ),
-                        ),
-                        value: e,
-                        body: GridView.builder(
-                          physics: const BouncingScrollPhysics(),
-                          scrollDirection: Axis.vertical,
-                          shrinkWrap: true,
-                          itemCount: e.childCategory.length,
-                          gridDelegate:
-                              const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2,
-                            mainAxisExtent: 50,
-                          ),
-                          itemBuilder: (context, index) {
-                            return Container(
-                              padding: const EdgeInsets.all(5),
-                              margin: const EdgeInsets.symmetric(
-                                vertical: 2,
-                                horizontal: 5,
+                        );
+                  },
+                  children: categoryList[state.stateIndex]
+                      .childCategory
+                      .map((e) {
+                        if (e.childCategory.isNotEmpty) {
+                          return ExpansionPanelRadio(
+                            headerBuilder: (context, isExpanded) => ListTile(
+                              title: Text(e.name.toString()),
+                              trailing: Icon(
+                                isExpanded
+                                    ? IconlyLight.arrowUp2
+                                    : IconlyLight.arrowDown2,
+                                size: 17,
                               ),
-                              alignment: Alignment.center,
-                              decoration: BoxDecoration(
-                                color: AppColors.lightGreyColor,
-                                borderRadius: AppBorderRadius().borderRadius15,
-                                border: Border.all(
-                                  color: AppColors.whiteColor,
-                                ),
-                              ),
-                              child: Text(
-                                e.childCategory[index].name.toString(),
-                                textAlign: TextAlign.center,
-                              ),
-                            );
-                          },
-                        ),
-                        canTapOnHeader: true,
-                      );
-                    } else {
-                      return ExpansionPanelRadio(
-                        headerBuilder: (context, isExpanded) {
-                          return ListTile(
-                            title: Text(e.name.toString()),
-                            trailing: const Icon(
-                              IconlyLight.arrowRight2,
-                              size: 17,
                             ),
+                            value: e,
+                            body: GridView.builder(
+                              physics: const BouncingScrollPhysics(),
+                              scrollDirection: Axis.vertical,
+                              shrinkWrap: true,
+                              itemCount: e.childCategory.length,
+                              gridDelegate:
+                                  const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2,
+                                mainAxisExtent: 50,
+                              ),
+                              itemBuilder: (context, index) {
+                                return Container(
+                                  padding: const EdgeInsets.all(5),
+                                  margin: const EdgeInsets.symmetric(
+                                    vertical: 2,
+                                    horizontal: 5,
+                                  ),
+                                  alignment: Alignment.center,
+                                  decoration: BoxDecoration(
+                                    color: AppColors.lightGreyColor,
+                                    borderRadius:
+                                        AppBorderRadius().borderRadius15,
+                                    border: Border.all(
+                                      color: AppColors.whiteColor,
+                                    ),
+                                  ),
+                                  child: Text(
+                                    e.childCategory[index].name.toString(),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                );
+                              },
+                            ),
+                            canTapOnHeader: true,
                           );
-                        },
-                        value: e,
-                        body: const SizedBox.shrink(),
-                        canTapOnHeader: false,
-                      );
-                    }
-                  })
-                  .toList()
-                  .cast<ExpansionPanel>(),
+                        } else {
+                          return ExpansionPanelRadio(
+                            headerBuilder: (context, isExpanded) {
+                              return ListTile(
+                                title: Text(e.name.toString()),
+                                trailing: const Icon(
+                                  IconlyLight.arrowRight2,
+                                  size: 17,
+                                ),
+                              );
+                            },
+                            value: e,
+                            body: const SizedBox.shrink(),
+                            canTapOnHeader: false,
+                          );
+                        }
+                      })
+                      .toList()
+                      .cast<ExpansionPanel>(),
+                );
+              },
             );
           },
         ),

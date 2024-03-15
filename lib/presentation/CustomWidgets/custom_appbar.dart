@@ -41,11 +41,12 @@ class CustomAppbar extends StatelessWidget implements PreferredSize {
               icon: Icon(
                 IconlyLight.arrowLeftSquare,
                 color: AppColors.darkOrangeColor,
-              ))
+              ),
+            )
           : const SizedBox(),
       actions: [
         number == 1
-            ? iconSearch()
+            ? iconSearch(context)
             : number == 2
                 ? iconDelete(context)
                 : const SizedBox(),
@@ -83,7 +84,7 @@ class CustomAppbar extends StatelessWidget implements PreferredSize {
     );
   }
 
-  Widget iconSearch() {
+  Widget iconSearch(BuildContext context) {
     return Container(
       height: 38.w,
       width: 38.w,
@@ -93,7 +94,9 @@ class CustomAppbar extends StatelessWidget implements PreferredSize {
         shape: BoxShape.circle,
       ),
       child: IconButton(
-        onPressed: () {},
+        onPressed: () {
+          context.pushNamed('search');
+        },
         icon: SvgPicture.asset(
           search,
           height: 22.w,

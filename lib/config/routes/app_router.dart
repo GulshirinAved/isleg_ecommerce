@@ -21,6 +21,7 @@ import 'package:isleg_ecommerce/presentation/Screens/favorite/favorite_screen.da
 import 'package:isleg_ecommerce/presentation/Screens/home/home_screen.dart';
 import 'package:isleg_ecommerce/presentation/Screens/home/productProfile_screen.dart';
 import 'package:isleg_ecommerce/presentation/Screens/profile/profile_screen.dart';
+import 'package:isleg_ecommerce/presentation/Screens/search/search_screen.dart';
 import 'package:isleg_ecommerce/presentation/Screens/signUp/login_screen.dart';
 import 'package:isleg_ecommerce/presentation/Screens/signUp/signup_screen.dart';
 
@@ -118,6 +119,13 @@ class AppRouter {
                   );
                 },
               ),
+              GoRoute(
+                path: 'search',
+                name: 'search',
+                builder: (context, state) {
+                  return const SearchScreen();
+                },
+              )
             ],
           ),
           GoRoute(

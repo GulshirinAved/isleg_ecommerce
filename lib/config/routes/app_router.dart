@@ -7,6 +7,7 @@ import 'package:isleg_ecommerce/blocs/carts/cart/cart_bloc.dart';
 import 'package:isleg_ecommerce/blocs/carts/deliverySelection/delivery_selection_bloc.dart';
 import 'package:isleg_ecommerce/blocs/carts/paymentSelection/payment_selection_bloc.dart';
 import 'package:isleg_ecommerce/blocs/favButton/fav_button_bloc.dart';
+import 'package:isleg_ecommerce/blocs/home/categoryProduct_bloc/category_product_bloc.dart';
 import 'package:isleg_ecommerce/blocs/home/category_bloc/category_selection_bloc.dart';
 import 'package:isleg_ecommerce/blocs/signup/passwordObscure/password_obscure_bloc.dart';
 import 'package:isleg_ecommerce/blocs/signup/signin_agree/signin_agree_bloc.dart';
@@ -95,7 +96,19 @@ class AppRouter {
                     path: 'categoryProduct',
                     name: 'categoryProduct',
                     builder: (context, state) {
-                      return const CategoryProductsScreen();
+                      final Map<String, dynamic>? extraData =
+                          state.extra as Map<String, dynamic>?;
+                      final String name = extraData?['name'] as String;
+                      final String id = extraData?['id'] as String;
+
+                      return BlocProvider(
+                        create: (context) => CategoryProductBloc()
+                          ..add(GetCategoryProductList(id: id)),
+                        child: CategoryProductsScreen(
+                          name: name,
+                          id: id,
+                        ),
+                      );
                     },
                   ),
                 ],

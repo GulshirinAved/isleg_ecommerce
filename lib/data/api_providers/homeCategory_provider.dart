@@ -9,7 +9,7 @@ class HomeCategoryProvider {
   Box langBox = Hive.box('lang');
 
   Future<List<dynamic>> fetchHomeCategory() async {
-    final String lang = langBox.get('lang');
+    final String lang = langBox.get('lang') ?? 'tr';
     final String homecategoryUrl = '$url$lang/homepage-categories';
 
     try {

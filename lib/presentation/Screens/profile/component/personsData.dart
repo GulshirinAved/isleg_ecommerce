@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:isleg_ecommerce/config/constants/constants.dart';
+
 import 'package:isleg_ecommerce/config/theme/theme.dart';
 
 class PersonData extends StatelessWidget {

@@ -41,7 +41,7 @@ class FavoriteScreen extends StatelessWidget {
                     shrinkWrap: true,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
-                      mainAxisExtent: 215.h,
+                      mainAxisExtent: 220.h,
                     ),
                     itemCount: state.favList.length,
                     itemBuilder: (context, index) {
@@ -63,13 +63,15 @@ class FavoriteScreen extends StatelessWidget {
                             return ProductCard(
                               index: index,
                               favItem: FavItem(
-                                favId: state.favList[index].favId,
-                                favName: state.favList[index].favName,
-                                favPrice: state.favList[index].favPrice,
-                                favPrevious_price:
-                                    state.favList[index].favPrevious_price,
-                                image: productImage,
-                              ),
+                                  favId: state.favList[index].favId,
+                                  favName: state.favList[index].favName,
+                                  favPrice: state.favList[index].favPrice,
+                                  favPrevious_price:
+                                      state.favList[index].favPrevious_price,
+                                  image: productImage,
+                                  brendName: state.favList[index].brendName,
+                                  limitAmount:
+                                      state.favList[index].limitAmount),
                               cartItem: cartItem,
                             );
                           },

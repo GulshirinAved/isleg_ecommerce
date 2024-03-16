@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
+import 'package:go_router/go_router.dart';
 import 'package:isleg_ecommerce/blocs/category/category_bloc.dart';
 import 'package:isleg_ecommerce/blocs/home/category_bloc/categery_selection_state.dart';
 import 'package:isleg_ecommerce/blocs/home/category_bloc/category_selection_bloc.dart';
@@ -64,24 +65,36 @@ class CategoryRight extends StatelessWidget {
                                 mainAxisExtent: 50,
                               ),
                               itemBuilder: (context, index) {
-                                return Container(
-                                  padding: const EdgeInsets.all(5),
-                                  margin: const EdgeInsets.symmetric(
-                                    vertical: 2,
-                                    horizontal: 5,
-                                  ),
-                                  alignment: Alignment.center,
-                                  decoration: BoxDecoration(
-                                    color: AppColors.lightGreyColor,
-                                    borderRadius:
-                                        AppBorderRadius().borderRadius15,
-                                    border: Border.all(
-                                      color: AppColors.whiteColor,
+                                return GestureDetector(
+                                  onTap: () {
+                                    context.pushNamed(
+                                      'categoryProduct',
+                                      extra: {
+                                        'name': e.childCategory[index].name
+                                            .toString(),
+                                        'id': e.childCategory[index].id,
+                                      },
+                                    );
+                                  },
+                                  child: Container(
+                                    padding: const EdgeInsets.all(5),
+                                    margin: const EdgeInsets.symmetric(
+                                      vertical: 2,
+                                      horizontal: 5,
                                     ),
-                                  ),
-                                  child: Text(
-                                    e.childCategory[index].name.toString(),
-                                    textAlign: TextAlign.center,
+                                    alignment: Alignment.center,
+                                    decoration: BoxDecoration(
+                                      color: AppColors.lightGreyColor,
+                                      borderRadius:
+                                          AppBorderRadius().borderRadius15,
+                                      border: Border.all(
+                                        color: AppColors.whiteColor,
+                                      ),
+                                    ),
+                                    child: Text(
+                                      e.childCategory[index].name.toString(),
+                                      textAlign: TextAlign.center,
+                                    ),
                                   ),
                                 );
                               },
@@ -91,11 +104,22 @@ class CategoryRight extends StatelessWidget {
                         } else {
                           return ExpansionPanelRadio(
                             headerBuilder: (context, isExpanded) {
-                              return ListTile(
-                                title: Text(e.name.toString()),
-                                trailing: const Icon(
-                                  IconlyLight.arrowRight2,
-                                  size: 17,
+                              return GestureDetector(
+                                onTap: () {
+                                  context.pushNamed(
+                                    'categoryProduct',
+                                    extra: {
+                                      'name': e.name?.toString(),
+                                      'id': e.id,
+                                    },
+                                  );
+                                },
+                                child: ListTile(
+                                  title: Text(e.name?.toString() ?? ''),
+                                  trailing: const Icon(
+                                    IconlyLight.arrowRight2,
+                                    size: 17,
+                                  ),
                                 ),
                               );
                             },

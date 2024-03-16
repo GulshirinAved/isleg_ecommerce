@@ -123,18 +123,20 @@ class ProductProfileScreen extends StatelessWidget {
                       leftTitle: 'Haryt kody',
                       rightTitle: 'GRS49069',
                     ),
-                    ProductDesc(
-                      leftTitle: 'Brend',
-                      rightTitle: 'Bianyo',
-                      color: AppColors.darkOrangeColor,
-                    ),
+                    favItem.brendName == ''
+                        ? const SizedBox.shrink()
+                        : ProductDesc(
+                            leftTitle: 'Brend',
+                            rightTitle: favItem.brendName,
+                            color: AppColors.darkOrangeColor,
+                          ),
                     const ProductDesc(
                       leftTitle: 'Barkod',
                       rightTitle: '14314672',
                     ),
                     ProductDesc(
                       leftTitle: 'Möçberi',
-                      rightTitle: '12 sany',
+                      rightTitle: '${favItem.limitAmount} sany',
                       color: AppColors.darkOrangeColor,
                     ),
                     Padding(

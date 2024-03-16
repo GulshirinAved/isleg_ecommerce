@@ -14,10 +14,12 @@ void main() async {
   await Hive.openBox('dataBox');
   await Hive.openBox('headerBox');
   await Hive.openBox('lang');
+  await Hive.openBox('categoryProductBox');
   final Box dataBox = Hive.box('dataBox');
   final Box headerBox = Hive.box('headerBox');
   await dataBox.clear();
   await headerBox.clear();
+
   runApp(
     BlocProvider(
       create: (context) => LanguageBloc()..add(InitialLanguageEvent()),

@@ -3,18 +3,22 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:isleg_ecommerce/blocs/favButton/fav_button_bloc.dart';
-import 'package:isleg_ecommerce/config/constants/constants.dart';
+import 'package:isleg_ecommerce/blocs/home/categoryProduct_bloc/category_product_bloc.dart';
 import 'package:isleg_ecommerce/config/theme/theme.dart';
 import 'package:isleg_ecommerce/data/models/cart_item.dart';
 import 'package:isleg_ecommerce/data/models/favItem_model.dart';
 import 'package:isleg_ecommerce/presentation/CustomWidgets/custom_appbar.dart';
 import 'package:isleg_ecommerce/presentation/CustomWidgets/product_card.dart';
 import 'package:isleg_ecommerce/presentation/Screens/category/components/filtering.dart';
-import 'package:isleg_ecommerce/presentation/Screens/category/components/mainTitle.dart';
 import 'package:isleg_ecommerce/presentation/Screens/category/components/sorting.dart';
 
 class CategoryProductsScreen extends StatelessWidget {
+  final String name;
+  final String id;
+
   const CategoryProductsScreen({
+    required this.name,
+    required this.id,
     Key? key,
   }) : super(key: key);
 
@@ -25,70 +29,114 @@ class CategoryProductsScreen extends StatelessWidget {
         number: 1,
         needIcon: true,
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                color: AppColors.whiteColor,
-                border: Border.all(
-                  color: AppColors.lightGreyColor1.withOpacity(0.5),
-                ),
-              ),
-              padding: const EdgeInsets.all(10),
-              child: const Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Sorting(),
-                  MainTitle(title: 'Ýazuw'),
-                  Filtering(),
-                ],
+      body: Column(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              color: AppColors.whiteColor,
+              border: Border.all(
+                color: AppColors.lightGreyColor1.withOpacity(0.5),
               ),
             ),
-            SizedBox(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height,
-              child: GridView.builder(
-                shrinkWrap: true,
-                padding: const EdgeInsets.only(top: 10, left: 10),
-                physics: const BouncingScrollPhysics(),
-                itemCount: productList.length,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  mainAxisExtent: 215.h,
-                ),
-                itemBuilder: (context, index) {
-                  return Container(
-                    margin: const EdgeInsets.only(bottom: 10),
-                    child: BlocBuilder<FavButtonBloc, FavButtonState>(
-                      builder: (context, state) {
-                        return ProductCard(
-                          favItem: FavItem(
-                            favId: productList[index]['id'],
-                            favName: productList[index]['name'],
-                            favPrice: productList[index]['price'],
-                            favPrevious_price: productList[index]
-                                ['previous_price'],
-                            image: personImage,
-                          ),
-                          cartItem: CartItem(
-                            id: productList[index]['id'],
-                            name: productList[index]['name'],
-                            price: productList[index]['price'],
-                            previous_price: productList[index]
-                                ['previous_price'],
-                            image: productImage,
-                          ),
-                          index: index,
-                        );
-                      },
+            padding: const EdgeInsets.all(10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Sorting(),
+                Container(
+                  width: 165.w,
+                  child: Text(
+                    name,
+                    maxLines: 1,
+                    textAlign: TextAlign.center,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      color: AppColors.darkBlueColor,
+                      fontSize: AppFonts().fontSize18,
                     ),
-                  );
-                },
-              ),
+                  ),
+                ),
+                const Filtering(),
+              ],
             ),
-          ],
-        ),
+          ),
+          SizedBox(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height - 190,
+            child: BlocBuilder<CategoryProductBloc, CategoryProductState>(
+              builder: (context, state) {
+                if (state is CategoryProductError) {
+                  return Center(
+                    child: Text(state.error.toString()),
+                  );
+                } else if (state is CategoryProductInitial) {
+                  return const Center(
+                    child: Text('It is initial'),
+                  );
+                } else if (state is CategoryProductLoading) {
+                  return const Center(
+                    child: Text('It is loading'),
+                  );
+                } else if (state is CategoryProductLoaded) {
+                  if (state.categoryProductList.isEmpty) {
+                    return const Center(
+                      child: Text('it is empty'),
+                    );
+                  }
+                  return GridView.builder(
+                    shrinkWrap: true,
+                    padding: const EdgeInsets.only(top: 10, left: 10),
+                    physics: const BouncingScrollPhysics(),
+                    itemCount: state.categoryProductList.length,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      mainAxisExtent: 220.h,
+                    ),
+                    itemBuilder: (context, index) {
+                      return Container(
+                        margin: const EdgeInsets.only(bottom: 10),
+                        child: BlocBuilder<FavButtonBloc, FavButtonState>(
+                          builder: (context, stateFav) {
+                            return ProductCard(
+                              favItem: FavItem(
+                                  favId: id,
+                                  favName: state.categoryProductList[index]
+                                      .translations[1].tm.name,
+                                  favPrice: state
+                                      .categoryProductList[index].price
+                                      .toString(),
+                                  favPrevious_price: 'previous_price',
+                                  image: state
+                                      .categoryProductList[index].mainImage,
+                                  brendName: state
+                                      .categoryProductList[index].brend.name,
+                                  limitAmount: state
+                                      .categoryProductList[index].limitAmount),
+                              cartItem: CartItem(
+                                id: id,
+                                name: state.categoryProductList[index]
+                                    .translations[1].tm.name,
+                                price: state.categoryProductList[index].price
+                                    .toString(),
+                                previous_price: 'previous_price',
+                                image:
+                                    state.categoryProductList[index].mainImage,
+                              ),
+                              index: index,
+                            );
+                          },
+                        ),
+                      );
+                    },
+                  );
+                }
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              },
+            ),
+          ),
+        ],
       ),
     );
   }

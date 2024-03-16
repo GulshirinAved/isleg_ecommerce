@@ -18,6 +18,9 @@ class LanguageBloc extends Bloc<LanguageEvent, LanguageState> {
             emit(const ChangeLanguageState(languageCode: 'tr'));
           }
         }
+        if (langBox.get('lang') == null) {
+          emit(const ChangeLanguageState(languageCode: 'tr'));
+        }
       } else if (event is RussianLanguageEvent) {
         langBox.put('lang', 'ru');
         emit(const ChangeLanguageState(languageCode: 'ru'));

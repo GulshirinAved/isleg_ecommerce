@@ -1,18 +1,31 @@
-class GetCategoryProduct {
+class GetCategoryProductModel {
   List<Brend>? brends;
   Category? category;
   int? countOfProducts;
   bool? status;
 
-  GetCategoryProduct({
+  GetCategoryProductModel({
     this.brends,
     this.category,
     this.countOfProducts,
     this.status,
   });
 
-  factory GetCategoryProduct.fromJson(Map<String, dynamic> json) =>
-      GetCategoryProduct(
+  GetCategoryProductModel copyWith({
+    List<Brend>? brends,
+    Category? category,
+    int? countOfProducts,
+    bool? status,
+  }) =>
+      GetCategoryProductModel(
+        brends: brends ?? this.brends,
+        category: category ?? this.category,
+        countOfProducts: countOfProducts ?? this.countOfProducts,
+        status: status ?? this.status,
+      );
+
+  factory GetCategoryProductModel.fromJson(Map<String, dynamic> json) =>
+      GetCategoryProductModel(
         brends: json["brends"] == null
             ? []
             : List<Brend>.from(json["brends"]!.map((x) => Brend.fromJson(x))),
@@ -42,6 +55,15 @@ class Brend {
     this.name,
   });
 
+  Brend copyWith({
+    String? id,
+    String? name,
+  }) =>
+      Brend(
+        id: id ?? this.id,
+        name: name ?? this.name,
+      );
+
   factory Brend.fromJson(Map<String, dynamic> json) => Brend(
         id: json["id"],
         name: json["name"],
@@ -63,6 +85,17 @@ class Category {
     this.name,
     this.products,
   });
+
+  Category copyWith({
+    String? id,
+    String? name,
+    List<Product>? products,
+  }) =>
+      Category(
+        id: id ?? this.id,
+        name: name ?? this.name,
+        products: products ?? this.products,
+      );
 
   factory Category.fromJson(Map<String, dynamic> json) => Category(
         id: json["id"],
@@ -109,6 +142,33 @@ class Product {
     this.isVisible,
   });
 
+  Product copyWith({
+    String? id,
+    String? brendId,
+    double? price,
+    String? mainImage,
+    Brend? brend,
+    int? limitAmount,
+    int? amount,
+    bool? isNew,
+    List<Translation>? translations,
+    String? code,
+    bool? isVisible,
+  }) =>
+      Product(
+        id: id ?? this.id,
+        brendId: brendId ?? this.brendId,
+        price: price ?? this.price,
+        mainImage: mainImage ?? this.mainImage,
+        brend: brend ?? this.brend,
+        limitAmount: limitAmount ?? this.limitAmount,
+        amount: amount ?? this.amount,
+        isNew: isNew ?? this.isNew,
+        translations: translations ?? this.translations,
+        code: code ?? this.code,
+        isVisible: isVisible ?? this.isVisible,
+      );
+
   factory Product.fromJson(Map<String, dynamic> json) => Product(
         id: json["id"],
         brendId: json["brend_id"],
@@ -152,6 +212,15 @@ class Translation {
     this.tm,
   });
 
+  Translation copyWith({
+    Ru? ru,
+    Ru? tm,
+  }) =>
+      Translation(
+        ru: ru ?? this.ru,
+        tm: tm ?? this.tm,
+      );
+
   factory Translation.fromJson(Map<String, dynamic> json) => Translation(
         ru: json["ru"] == null ? null : Ru.fromJson(json["ru"]),
         tm: json["tm"] == null ? null : Ru.fromJson(json["tm"]),
@@ -171,6 +240,15 @@ class Ru {
     this.name,
     this.description,
   });
+
+  Ru copyWith({
+    String? name,
+    String? description,
+  }) =>
+      Ru(
+        name: name ?? this.name,
+        description: description ?? this.description,
+      );
 
   factory Ru.fromJson(Map<String, dynamic> json) => Ru(
         name: json["name"],

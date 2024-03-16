@@ -39,7 +39,7 @@ class CustomAppbar extends StatelessWidget implements PreferredSize {
                 context.pop();
               },
               icon: Icon(
-                IconlyLight.arrowLeftSquare,
+                IconlyLight.arrowLeftCircle,
                 color: AppColors.darkOrangeColor,
               ),
             )

@@ -105,7 +105,7 @@ class ProductCard extends StatelessWidget {
               child: Container(
                 margin: EdgeInsets.only(left: 6.w),
                 child: Text(
-                  '${favItem.favPrevious_price} manat',
+                  '${favItem.favPrevious_price.toString()} manat',
                   style: TextStyle(
                     decoration: TextDecoration.lineThrough,
                     color: AppColors.darkBlueColor,
@@ -129,7 +129,7 @@ class ProductCard extends StatelessWidget {
             ),
             Positioned(
               right: 7,
-              bottom: 9,
+              bottom: 5.h,
               child: CartButton(
                 cartItem: cartItem,
               ),

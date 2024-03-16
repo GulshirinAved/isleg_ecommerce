@@ -15,7 +15,7 @@ class Filtering extends StatelessWidget {
           child: Text(
             'Filter',
             style: TextStyle(
-              color: AppColors.greyColor,
+              color: AppColors.darkBlueColor,
               fontWeight: FontWeight.bold,
               fontSize: AppFonts().fontSize13,
             ),

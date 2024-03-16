@@ -8,7 +8,7 @@ class BannerProvider {
   final Box langBox = Hive.box('lang');
 
   Future<List<dynamic>> fetchBanner() async {
-    final String lang = langBox.get('lang');
+    final String lang = langBox.get('lang') ?? 'tr';
 
     final String bannerUrl = '$url$lang/banners';
 

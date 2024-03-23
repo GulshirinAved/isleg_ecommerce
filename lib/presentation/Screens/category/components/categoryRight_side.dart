@@ -77,6 +77,7 @@ class CategoryRight extends StatelessWidget {
                                               .toString(),
                                           'id': e.childCategory[index].id,
                                           'asc': 'ASC',
+                                          'n': '',
                                         },
                                       );
                                     },
@@ -116,6 +117,7 @@ class CategoryRight extends StatelessWidget {
                                         'name': e.name?.toString(),
                                         'id': e.id,
                                         'asc': 'ASC',
+                                        'n': '',
                                       },
                                     );
                                   },

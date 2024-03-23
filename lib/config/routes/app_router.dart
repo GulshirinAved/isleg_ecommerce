@@ -9,6 +9,7 @@ import 'package:isleg_ecommerce/blocs/carts/paymentSelection/payment_selection_b
 import 'package:isleg_ecommerce/blocs/favButton/fav_button_bloc.dart';
 import 'package:isleg_ecommerce/blocs/home/categoryProduct_bloc/category_product_bloc.dart';
 import 'package:isleg_ecommerce/blocs/home/category_bloc/category_selection_bloc.dart';
+import 'package:isleg_ecommerce/blocs/showAllProducts/sort_bloc/sort_bloc.dart';
 import 'package:isleg_ecommerce/blocs/signup/passwordObscure/password_obscure_bloc.dart';
 import 'package:isleg_ecommerce/blocs/signup/signin_agree/signin_agree_bloc.dart';
 import 'package:isleg_ecommerce/data/models/cart_item.dart';
@@ -101,21 +102,30 @@ class AppRouter {
                       final String name = extraData?['name'] as String;
                       final String id = extraData?['id'] as String;
                       final String asc = extraData?['asc'] ?? 'ASC' as String;
+                      final String n = extraData?['n'] as String;
 
-                      return BlocProvider(
-                        create: (context) => CategoryProductBloc()
-                          ..add(
-                            GetCategoryProductList(
-                              id: id,
-                              postData: {
-                                'status': true,
-                                'price_sort': asc,
-                                'min_price': 0,
-                                'max_price': 100,
-                                'is_discount': false,
-                              },
-                            ),
+                      return MultiBlocProvider(
+                        providers: [
+                          BlocProvider(
+                            create: (context) => CategoryProductBloc()
+                              ..add(
+                                GetCategoryProductList(
+                                  id: id,
+                                  postData: {
+                                    'status': true,
+                                    'price_sort': asc,
+                                    'min_price': 0,
+                                    'max_price': 100,
+                                    'is_discount': false,
+                                  },
+                                ),
+                              ),
                           ),
+                          BlocProvider(
+                            create: (context) => SortBloc()
+                              ..add(SortPressEvent(pressedTitle: n)),
+                          ),
+                        ],
                         child: CategoryProductsScreen(
                           name: name,
                           id: id,

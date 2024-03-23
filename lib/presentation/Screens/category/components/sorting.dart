@@ -9,6 +9,7 @@ import 'package:isleg_ecommerce/app_localization.dart';
 
 import 'package:isleg_ecommerce/config/constants/constants.dart';
 import 'package:isleg_ecommerce/config/theme/theme.dart';
+import 'package:isleg_ecommerce/presentation/CustomWidgets/radio_button.dart';
 
 import '../../../../blocs/showAllProducts/sort_bloc/sort_bloc.dart';
 
@@ -29,18 +30,15 @@ class Sorting extends StatefulWidget {
 class _SortingState extends State<Sorting> {
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => SortBloc(),
-      child: BlocBuilder<SortBloc, SortState>(
-        builder: (context, state) {
-          return GestureDetector(
-            onTap: () {
-              openAnimatedDialog(context);
-            },
-            child: sortTitle(context),
-          );
-        },
-      ),
+    return BlocBuilder<SortBloc, SortState>(
+      builder: (context, state) {
+        return GestureDetector(
+          onTap: () {
+            openAnimatedDialog(context);
+          },
+          child: sortTitle(context),
+        );
+      },
     );
   }
 
@@ -62,6 +60,7 @@ class _SortingState extends State<Sorting> {
               mainAxisAlignment: MainAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
+                //Top title
                 Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -84,6 +83,7 @@ class _SortingState extends State<Sorting> {
                 Divider(
                   color: AppColors.greyColor,
                 ),
+                //Radio button
                 Container(
                   decoration: BoxDecoration(
                     color: AppColors.whiteColor,
@@ -128,7 +128,7 @@ class _SortingState extends State<Sorting> {
                         ),
                         onPressed: () {
                           Navigator.pop(context);
-                          context.pushNamed(
+                          context.pushReplacementNamed(
                             'categoryProduct',
                             extra: {
                               'name': widget.name,
@@ -136,6 +136,7 @@ class _SortingState extends State<Sorting> {
                               'asc': sortState.title == sortingTitle[0]
                                   ? 'ASC'
                                   : 'DESC',
+                              'n': sortState.title
                             },
                           );
                         },
@@ -153,7 +154,6 @@ class _SortingState extends State<Sorting> {
                     );
                   },
                 ),
-                //
               ],
             ),
           ),
@@ -181,45 +181,6 @@ class _SortingState extends State<Sorting> {
           ),
         ),
       ],
-    );
-  }
-}
-
-// ignore: must_be_immutable
-class RadioButtn extends StatelessWidget {
-  final value;
-  final groupValue;
-  final title;
-  VoidCallback onchanged;
-  RadioButtn({
-    required this.value,
-    required this.groupValue,
-    required this.title,
-    required this.onchanged,
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return RadioListTile(
-      selectedTileColor: AppColors.darkOrangeColor,
-      contentPadding: EdgeInsets.zero,
-      dense: true,
-      controlAffinity: ListTileControlAffinity.leading,
-      activeColor: AppColors.darkBlueColor,
-      value: value,
-      groupValue: groupValue,
-      title: Text(
-        AppLocalization.of(context).getTransatedValues(title) ?? '',
-        style: TextStyle(
-          color: AppColors.darkBlueColor,
-          fontWeight: FontWeight.bold,
-        ),
-      ),
-      fillColor: MaterialStatePropertyAll(
-        AppColors.darkOrangeColor,
-      ),
-      onChanged: (value) => onchanged.call(),
     );
   }
 }

@@ -23,8 +23,15 @@ String logout = 'assets/icons/logout.svg';
 String arrowRight = 'assets/icons/arrowRight.svg';
 String sort = 'assets/icons/sort.svg';
 
+//images
 String productImage = 'assets/images/image.png';
 String personImage = 'assets/images/person.png';
+
+//sort title
+List sortingTitle = [
+  'cheap',
+  'expensive',
+];
 
 //product list
 List productList = [

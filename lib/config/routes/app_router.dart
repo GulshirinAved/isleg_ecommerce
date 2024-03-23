@@ -100,10 +100,22 @@ class AppRouter {
                           state.extra as Map<String, dynamic>?;
                       final String name = extraData?['name'] as String;
                       final String id = extraData?['id'] as String;
+                      final String asc = extraData?['asc'] ?? 'ASC' as String;
 
                       return BlocProvider(
                         create: (context) => CategoryProductBloc()
-                          ..add(GetCategoryProductList(id: id)),
+                          ..add(
+                            GetCategoryProductList(
+                              id: id,
+                              postData: {
+                                'status': true,
+                                'price_sort': asc,
+                                'min_price': 0,
+                                'max_price': 100,
+                                'is_discount': false,
+                              },
+                            ),
+                          ),
                         child: CategoryProductsScreen(
                           name: name,
                           id: id,
@@ -138,7 +150,7 @@ class AppRouter {
                 builder: (context, state) {
                   return const SearchScreen();
                 },
-              )
+              ),
             ],
           ),
           GoRoute(

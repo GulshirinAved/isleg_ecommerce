@@ -42,8 +42,11 @@ class CategoryProductsScreen extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Sorting(),
-                Container(
+                Sorting(
+                  id: id,
+                  name: name,
+                ),
+                SizedBox(
                   width: 165.w,
                   child: Text(
                     name,
@@ -99,19 +102,20 @@ class CategoryProductsScreen extends StatelessWidget {
                           builder: (context, stateFav) {
                             return ProductCard(
                               favItem: FavItem(
-                                  favId: id,
-                                  favName: state.categoryProductList[index]
-                                      .translations[1].tm.name,
-                                  favPrice: state
-                                      .categoryProductList[index].price
-                                      .toString(),
-                                  favPrevious_price: 'previous_price',
-                                  image: state
-                                      .categoryProductList[index].mainImage,
-                                  brendName: state
-                                      .categoryProductList[index].brend.name,
-                                  limitAmount: state
-                                      .categoryProductList[index].limitAmount),
+                                favId: id,
+                                favName: state.categoryProductList[index]
+                                    .translations[1].tm.name,
+                                favPrice: state.categoryProductList[index].price
+                                    .toString(),
+                                favPrevious_price: 'previous_price',
+                                image:
+                                    state.categoryProductList[index].mainImage,
+                                brendName: state.categoryProductList[index]
+                                        .brend.name ??
+                                    '',
+                                limitAmount: state
+                                    .categoryProductList[index].limitAmount,
+                              ),
                               cartItem: CartItem(
                                 id: id,
                                 name: state.categoryProductList[index]

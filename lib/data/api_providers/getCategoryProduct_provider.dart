@@ -9,17 +9,14 @@ class GetCategoryProductProvider {
   Dio dio = Dio();
   final Box langBox = Hive.box('lang');
   Box categoryProductBox = Hive.box('categoryProductBox');
-  Future<List<dynamic>> fetchCategoryProduct(String id) async {
+  Future<List<dynamic>> fetchCategoryProduct(
+    String id,
+    Map<String, dynamic> postData,
+  ) async {
     final String lang = langBox.get('lang') ?? 'tr';
     final String getCategoryProductUrl = '$url$lang/category/$id/10/1';
 
-    final data = json.encode({
-      'status': true,
-      'price_sort': 'ASC',
-      'min_price': 0,
-      'max_price': 100,
-      'is_discount': false,
-    });
+    final data = json.encode(postData);
 
     try {
       if (categoryProductBox.isEmpty) {}

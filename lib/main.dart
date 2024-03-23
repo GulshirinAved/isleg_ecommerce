@@ -31,7 +31,7 @@ void main() async {
               locale = state.languageCode;
             }
             return MaterialApp.router(
-              title: 'Flutter Demo',
+              title: 'Isleg',
               debugShowCheckedModeBanner: false,
               theme: ThemeData(
                 colorScheme:

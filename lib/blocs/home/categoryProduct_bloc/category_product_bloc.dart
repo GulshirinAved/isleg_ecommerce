@@ -14,7 +14,10 @@ class CategoryProductBloc
       try {
         emit(CategoryProductLoading());
         final List<dynamic> categoryProductList =
-            await categoryProductRepository.fetchCategoryProductList(event.id);
+            await categoryProductRepository.fetchCategoryProductList(
+          event.id,
+          event.postData,
+        );
         emit(CategoryProductLoaded(categoryProductList: categoryProductList));
       } catch (e) {
         emit(CategoryProductError(error: e.toString()));

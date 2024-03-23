@@ -9,6 +9,6 @@ sealed class CategoryProductEvent extends Equatable {
 
 class GetCategoryProductList extends CategoryProductEvent {
   final String id;
-
-  const GetCategoryProductList({required this.id});
+  final Map<String, dynamic> postData;
+  const GetCategoryProductList({required this.id, required this.postData});
 }

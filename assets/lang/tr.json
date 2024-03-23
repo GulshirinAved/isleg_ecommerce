@@ -10,5 +10,9 @@
   "homePage": "Baş sahypa",
   "myFavorites": "Halanlarym",
   "cart": "Sebet",
-  "profile": "Profil"
+  "profile": "Profil",
+  "cheap": "Iň arzandan",
+  "expensive": "Iň gymmatdan",
+  "sort": "Tertipleme",
+  "toSort": "Tertiplemek"
 }

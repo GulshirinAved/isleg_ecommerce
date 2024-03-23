@@ -8,14 +8,15 @@ class FavItem {
   final String brendName;
   final int limitAmount;
 
-  FavItem(
-      {required this.favId,
-      required this.favName,
-      required this.favPrice,
-      required this.favPrevious_price,
-      required this.image,
-      required this.brendName,
-      required this.limitAmount});
+  FavItem({
+    required this.favId,
+    required this.favName,
+    required this.favPrice,
+    required this.favPrevious_price,
+    required this.image,
+    required this.brendName,
+    required this.limitAmount,
+  });
 
   @override
   bool operator ==(covariant FavItem other) {
@@ -51,12 +52,13 @@ class FavItem {
     int? limitAmount,
   }) {
     return FavItem(
-        favId: favId ?? this.favId,
-        favName: favName ?? this.favName,
-        favPrice: favPrice ?? this.favPrice,
-        favPrevious_price: favPrevious_price ?? this.favPrevious_price,
-        image: image ?? this.image,
-        brendName: brendName ?? this.brendName,
-        limitAmount: limitAmount ?? this.limitAmount);
+      favId: favId ?? this.favId,
+      favName: favName ?? this.favName,
+      favPrice: favPrice ?? this.favPrice,
+      favPrevious_price: favPrevious_price ?? this.favPrevious_price,
+      image: image ?? this.image,
+      brendName: brendName ?? this.brendName,
+      limitAmount: limitAmount ?? this.limitAmount,
+    );
   }
 }

@@ -13,7 +13,7 @@ class GetCategoryProductProvider {
     String id,
     Map<String, dynamic> postData,
   ) async {
-    final String lang = langBox.get('lang') ?? 'tr';
+    final String lang = langBox.isNotEmpty ? langBox.get('lang') : 'tm';
     final String getCategoryProductUrl = '$url$lang/category/$id/10/1';
 
     final data = json.encode(postData);

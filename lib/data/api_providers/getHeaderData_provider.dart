@@ -8,7 +8,7 @@ class GetHeaderProvider {
   Box headerBox = Hive.box('headerBox');
   final Box langBox = Hive.box('lang');
   Future<List<dynamic>> fetchGetHeader() async {
-    final String lang = langBox.get('lang') ?? 'tr';
+    final String lang = langBox.isNotEmpty ? langBox.get('lang') : 'tm';
     final String getHeaderUrl = '$url$lang/header';
 
     try {

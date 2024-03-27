@@ -54,6 +54,7 @@ class _SaleProductsState extends State<SaleProducts> {
               );
             }
             final List salesProducts = state.homeCategoryList[0].products;
+
             return Column(
               children: [
                 TopTitle(title: state.homeCategoryList[0].name),
@@ -69,17 +70,19 @@ class _SaleProductsState extends State<SaleProducts> {
                       return ProductCard(
                         index: index,
                         favItem: FavItem(
-                            favId: salesProducts[index].id,
-                            favName: salesProducts[index]
-                                .translations[1]
-                                .tm
-                                .name
-                                .toString(),
-                            favPrice: salesProducts[index].price.toString(),
-                            favPrevious_price: 'previous price',
-                            image: salesProducts[index].mainImage,
-                            brendName: salesProducts[index].brend.name ?? '',
-                            limitAmount: salesProducts[index].limitAmount),
+                          favId: salesProducts[index].id,
+                          favName: salesProducts[index]
+                              .translations[1]
+                              .tm
+                              .name
+                              .toString(),
+                          favPrice: salesProducts[index].price.toString(),
+                          favPrevious_price:
+                              salesProducts[index].oldPrice.toString(),
+                          image: salesProducts[index].mainImage,
+                          brendName: salesProducts[index].brend.name ?? '',
+                          limitAmount: salesProducts[index].limitAmount,
+                        ),
                         cartItem: CartItem(
                           id: salesProducts[index].id,
                           name: salesProducts[index]
@@ -87,8 +90,9 @@ class _SaleProductsState extends State<SaleProducts> {
                               .tm
                               .name
                               .toString(),
-                          price: 'previous price',
-                          previous_price: salesProducts[index].id,
+                          price: salesProducts[index].price.toString(),
+                          previous_price:
+                              salesProducts[index].oldPrice.toString(),
                           image: salesProducts[index].mainImage,
                         ),
                       );

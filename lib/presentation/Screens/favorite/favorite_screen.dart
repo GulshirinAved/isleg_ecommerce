@@ -63,15 +63,15 @@ class FavoriteScreen extends StatelessWidget {
                             return ProductCard(
                               index: index,
                               favItem: FavItem(
-                                  favId: state.favList[index].favId,
-                                  favName: state.favList[index].favName,
-                                  favPrice: state.favList[index].favPrice,
-                                  favPrevious_price:
-                                      state.favList[index].favPrevious_price,
-                                  image: productImage,
-                                  brendName: state.favList[index].brendName,
-                                  limitAmount:
-                                      state.favList[index].limitAmount),
+                                favId: state.favList[index].favId,
+                                favName: state.favList[index].favName,
+                                favPrice: state.favList[index].favPrice,
+                                favPrevious_price:
+                                    state.favList[index].favPrevious_price,
+                                image: productImage,
+                                brendName: state.favList[index].brendName,
+                                limitAmount: state.favList[index].limitAmount,
+                              ),
                               cartItem: cartItem,
                             );
                           },

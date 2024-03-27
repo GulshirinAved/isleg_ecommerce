@@ -153,14 +153,16 @@ class ProductProfileScreen extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            Text(
-                              '${favItem.favPrevious_price} manat',
-                              style: TextStyle(
-                                decoration: TextDecoration.lineThrough,
-                                color: AppColors.greyBlueColor,
-                                fontSize: AppFonts().fontSize15.sp,
-                              ),
-                            ),
+                            favItem.favPrevious_price == '0.0'
+                                ? const SizedBox.shrink()
+                                : Text(
+                                    '${favItem.favPrevious_price} manat',
+                                    style: TextStyle(
+                                      decoration: TextDecoration.lineThrough,
+                                      color: AppColors.greyBlueColor,
+                                      fontSize: AppFonts().fontSize15.sp,
+                                    ),
+                                  ),
                             Text(
                               '${favItem.favPrice} manat',
                               style: TextStyle(

@@ -94,28 +94,30 @@ class ProductCard extends StatelessWidget {
               top: 180,
               child: Container(
                 height: .5,
-                width: 200,
+                width: 186.w,
                 alignment: Alignment.center,
                 margin: const EdgeInsets.symmetric(horizontal: 6),
                 color: AppColors.darkBlueColor,
               ),
             ),
-            Positioned(
-              top: 185,
-              child: Container(
-                margin: EdgeInsets.only(left: 6.w),
-                child: Text(
-                  '${favItem.favPrevious_price.toString()} manat',
-                  style: TextStyle(
-                    decoration: TextDecoration.lineThrough,
-                    color: AppColors.darkBlueColor,
-                    fontSize: AppFonts().fontSize15.sp,
+            favItem.favPrevious_price == '0.0'
+                ? const SizedBox.shrink()
+                : Positioned(
+                    top: 185,
+                    child: Container(
+                      margin: EdgeInsets.only(left: 6.w),
+                      child: Text(
+                        '${favItem.favPrevious_price} manat',
+                        style: TextStyle(
+                          decoration: TextDecoration.lineThrough,
+                          color: AppColors.darkBlueColor,
+                          fontSize: AppFonts().fontSize15.sp,
+                        ),
+                      ),
+                    ),
                   ),
-                ),
-              ),
-            ),
             Positioned(
-              top: 205,
+              top: favItem.favPrevious_price == '0.0' ? 169.h : 175.h,
               child: Container(
                 margin: const EdgeInsets.only(left: 6),
                 child: Text(

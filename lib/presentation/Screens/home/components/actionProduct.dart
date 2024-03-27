@@ -62,17 +62,19 @@ class _ActionProductsState extends State<ActionProducts> {
                       return ProductCard(
                         index: index,
                         favItem: FavItem(
-                            favId: salesProducts[index].id,
-                            favName: salesProducts[index]
-                                .translations[1]
-                                .tm
-                                .name
-                                .toString(),
-                            favPrice: salesProducts[index].price.toString(),
-                            favPrevious_price: 'previous price',
-                            image: salesProducts[index].mainImage,
-                            brendName: salesProducts[index].brend.name ?? '',
-                            limitAmount: salesProducts[index].limitAmount),
+                          favId: salesProducts[index].id,
+                          favName: salesProducts[index]
+                              .translations[1]
+                              .tm
+                              .name
+                              .toString(),
+                          favPrice: salesProducts[index].price.toString(),
+                          favPrevious_price:
+                              salesProducts[index].oldPrice.toString(),
+                          image: salesProducts[index].mainImage,
+                          brendName: salesProducts[index].brend.name ?? '',
+                          limitAmount: salesProducts[index].limitAmount,
+                        ),
                         cartItem: CartItem(
                           id: salesProducts[index].id,
                           name: salesProducts[index]
@@ -80,8 +82,9 @@ class _ActionProductsState extends State<ActionProducts> {
                               .tm
                               .name
                               .toString(),
-                          price: 'previous price',
-                          previous_price: salesProducts[index].id,
+                          price: salesProducts[index].price.toString(),
+                          previous_price:
+                              salesProducts[index].oldPrice.toString(),
                           image: salesProducts[index].mainImage,
                         ),
                       );

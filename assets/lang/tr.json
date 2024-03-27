@@ -14,5 +14,7 @@
   "cheap": "Iň arzandan",
   "expensive": "Iň gymmatdan",
   "sort": "Tertipleme",
-  "toSort": "Tertiplemek"
+  "toSort": "Tertiplemek",
+  "noConnection1": "Aragatnaşyk ýok",
+  "noConnection2": "Internede baglanyp bolmady.Internet sazlamalaryňyzy barlap gaýtadan synanşyň!"
 }

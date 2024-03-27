@@ -26,6 +26,7 @@ import 'package:isleg_ecommerce/presentation/Screens/profile/profile_screen.dart
 import 'package:isleg_ecommerce/presentation/Screens/search/search_screen.dart';
 import 'package:isleg_ecommerce/presentation/Screens/signUp/login_screen.dart';
 import 'package:isleg_ecommerce/presentation/Screens/signUp/signup_screen.dart';
+import 'package:isleg_ecommerce/presentation/Screens/splash/splash_screen.dart';
 
 class AppRouter {
   AppRouter._();
@@ -36,6 +37,13 @@ class AppRouter {
     navigatorKey: _rootNavigatorKey,
     initialLocation: '/',
     routes: [
+      GoRoute(
+        path: '/',
+        name: '/splash',
+        builder: (context, state) {
+          return const SplashScreen();
+        },
+      ),
       ShellRoute(
         navigatorKey: _shellNavigatorKey,
         builder: (context, state, child) {
@@ -59,7 +67,7 @@ class AppRouter {
         },
         routes: [
           GoRoute(
-            path: '/',
+            path: '/home',
             name: 'home',
             builder: (context, state) {
               return MultiBlocProvider(

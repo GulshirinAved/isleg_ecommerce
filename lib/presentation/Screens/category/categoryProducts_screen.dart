@@ -107,7 +107,9 @@ class CategoryProductsScreen extends StatelessWidget {
                                     .translations[1].tm.name,
                                 favPrice: state.categoryProductList[index].price
                                     .toString(),
-                                favPrevious_price: 'previous_price',
+                                favPrevious_price: state
+                                    .categoryProductList[index].oldPrice
+                                    .toString(),
                                 image:
                                     state.categoryProductList[index].mainImage,
                                 brendName: state.categoryProductList[index]
@@ -122,7 +124,9 @@ class CategoryProductsScreen extends StatelessWidget {
                                     .translations[1].tm.name,
                                 price: state.categoryProductList[index].price
                                     .toString(),
-                                previous_price: 'previous_price',
+                                previous_price: state
+                                    .categoryProductList[index].oldPrice
+                                    .toString(),
                                 image:
                                     state.categoryProductList[index].mainImage,
                               ),

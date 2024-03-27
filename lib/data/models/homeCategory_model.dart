@@ -31,6 +31,7 @@ class HomeCategoryModel {
 class Product {
   String? id;
   double? price;
+  double? oldPrice;
   String? mainImage;
   Brend? brend;
   int? limitAmount;
@@ -40,6 +41,7 @@ class Product {
   Product({
     this.id,
     this.price,
+    this.oldPrice,
     this.mainImage,
     this.brend,
     this.limitAmount,
@@ -50,6 +52,7 @@ class Product {
   factory Product.fromJson(Map<String, dynamic> json) => Product(
         id: json['id'],
         price: json['price']?.toDouble(),
+        oldPrice: json['old_price'] ?? 0,
         mainImage: json['main_image'],
         brend: json['brend'] == null ? null : Brend.fromJson(json['brend']),
         limitAmount: json['limit_amount'],
@@ -64,6 +67,7 @@ class Product {
   Map<String, dynamic> toJson() => {
         'id': id,
         'price': price,
+        'old_price': oldPrice,
         'main_image': mainImage,
         'brend': brend?.toJson(),
         'limit_amount': limitAmount,

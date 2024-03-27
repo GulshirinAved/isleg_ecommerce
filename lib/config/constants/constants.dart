@@ -22,6 +22,7 @@ String info = 'assets/icons/info.svg';
 String logout = 'assets/icons/logout.svg';
 String arrowRight = 'assets/icons/arrowRight.svg';
 String sort = 'assets/icons/sort.svg';
+String wifi = 'assets/icons/wifi.svg';
 
 //images
 String productImage = 'assets/images/image.png';

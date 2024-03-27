@@ -10,16 +10,9 @@ sealed class InternetConnectionState extends Equatable {
 final class InternetConnectionInitial extends InternetConnectionState {}
 
 final class InternetConnectedState extends InternetConnectionState {
-  final String internetState;
-
-  const InternetConnectedState({required this.internetState});
-  @override
-  List<Object> get props => [internetState];
+  const InternetConnectedState();
 }
 
 final class InternetNotConnectedState extends InternetConnectionState {
-  final String internetState;
-  const InternetNotConnectedState({required this.internetState});
-  @override
-  List<Object> get props => [internetState];
+  const InternetNotConnectedState();
 }

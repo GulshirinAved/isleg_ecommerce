@@ -14,3 +14,7 @@ final class InternetConnectedEvent extends InternetConnectionEvent {
 final class InternetNotConnectedEvent extends InternetConnectionEvent {
   const InternetNotConnectedEvent();
 }
+
+final class InternetListenEvent extends InternetConnectionEvent {
+  const InternetListenEvent();
+}
